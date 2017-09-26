@@ -1,0 +1,96 @@
+@import 'var';
+#footer{
+    height: auto;padding: 0;padding-bottom: 90px;text-align: center;border-top: 1px solid #e3e3e3;background: none;
+    .footad{height: 100px;background-color: #f6f6f6;
+    }
+    .flist{padding: 26px 0 26px 75px;border-bottom: 1px solid #e6e6e6;
+        .flistdl{
+            float: left; width: 95px;height: 114px;padding-left: 42px;text-align: left;border-right: 1px dotted #e6e6e6;
+            dt{
+                font-size: 16px;line-height: 26px;height: 26px;color: #333;
+            }
+            dd{
+                line-height: 22px;height: 22px;
+                a{font-size: 12px;color: #666;
+                }
+                a:hover{color:$mainColor;}
+            }
+        }
+        dl.nob{border: 0;
+        }
+        .flistdl2{
+            float: left;margin-left: 20px;
+            dt{
+                float: left;
+
+                width: 80px;
+
+                text-align: center;
+                a
+                {
+                    text-decoration: none;
+                    font-size:12px;
+                    color: #222;
+                    outline: none;
+                    i{
+                        font-style: normal;
+                    }
+                    em {
+                        color: #999;font-style: normal;
+                    }
+                }
+            }
+            dd{margin: 25px 0 0 25px;float:left;
+            }
+        }
+    }
+    .footerinfo {padding-top: 22px;line-height: 22px;text-align: center;margin: 0 auto;width: 1140px;
+        p.footer-list {
+            height: 26px;
+            color: #555;
+            a {
+                color: #555;
+                padding: 0 8px;
+                font-size: 13px;
+            }
+            a:hover{color: $mainColor;}
+        }
+        .yqlink {
+            width: 960px;
+            margin: 0 auto;
+            .dlphh {
+                line-height: 22px;
+                height: 22px;
+                overflow: hidden;
+                text-align: left;
+                width: 900px;
+                float:left;
+                em {
+                    padding-right: 8px;
+                    color: #666;
+                }
+                a {
+                    padding-right: 8px;
+                    color: #555;
+                }
+                a:hover{color: $mainColor;}
+            }
+            .r_button {
+                width: 50px;
+                height: 22px;
+                line-height: 22px;
+                cursor: pointer;
+                color: #555;
+                float:right;
+            }
+        }
+        p.copyright {
+            color: #555;
+            line-height: 22px;
+        }
+        p.footer-list {
+            height: 26px;
+            color: #555;
+        }
+    }
+}

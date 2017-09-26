@@ -1,0 +1,110 @@
+@import 'var';
+#main{
+    background-color: #f2f2f2;
+    .topad-box {
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        .top-banner {
+            max-width: 1000px;
+            width: 100%;
+            _width: 1000px;
+            height: 340px;
+            margin: 0 auto;
+            position: relative;
+            .top_banner_img{
+                position: absolute;
+                overflow: hidden;
+                width: 1920px;
+                height: 340px;
+                top: 0;
+                left: 0;
+                margin-left: -471px;
+            }
+        }
+    }
+    .column_tit {
+        padding-top: 30px;
+        height: 23px;
+        line-height: 23px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #666;
+        h1 {
+            background-image: url(img/column.png);
+            background-repeat: no-repeat;
+            height: 23px;
+            text-indent: -999em;
+            margin-right: 10px;
+            width: 100px;
+            background-position: 0 0;
+            float:left;
+        }
+        .day_new {
+            background-position: 0 -26px;
+        }
+        .subtit {
+            color: #666;
+            font-size: 16px;
+            font-family: "微软雅黑";
+            float:left;
+        }
+        .rt_link {
+            color: #444;
+            float:right;
+            a:hover{
+                text-decoration:underline;
+            }
+        }
+    }
+    .boutique_con {
+        height: 351px;
+        overflow: hidden;
+        border-bottom: 1px solid #e8e8e8;
+        .w_col_322 {
+            width: 322px;
+            background-color: #fff;
+            .boutique_01 {
+                display: block;
+                border-right: 1px solid #e8e8e8;
+                border-bottom: 1px solid #e8e8e8;
+                border-left: 1px solid #e8e8e8;
+                height: 351px;
+                overflow: hidden;
+               img {
+                    height: 351px;
+                    width: 322px;
+                }
+            }
+        }
+        .w_col_226 {
+            width: 226px;
+            background-color: #fff;
+            .boutique_02 {
+                display: block;
+                border-right: 1px solid #e8e8e8;
+                border-bottom: 1px solid #e8e8e8;
+                height: 175px;
+                overflow: hidden;
+                img {
+                    height: 175px;
+                    width: 226px;
+                    transition: transform .2s linear;
+                    &:hover{
+                        transform: translateX(-5px);
+                    }
+                }
+            }
+            .boutique_04 {
+                display: block;
+                border-right: 1px solid #e8e8e8;
+                height: 351px;
+                overflow: hidden;
+                img {
+                    width: 226px;
+                    height: 351px;
+                }
+            }
+        }
+    }
+}

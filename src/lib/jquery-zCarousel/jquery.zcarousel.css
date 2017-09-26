@@ -1,0 +1,16 @@
+.zcarousel{position:relative;width: 224px;height: 288px;overflow: hidden;}
+.zcarousel ul{position:absolute;left:0;top:0;overflow: hidden;}
+.zcarousel ul.horizontal li{float:left;position: relative;overflow:hidden;}
+.zcarousel ul.fade li{position: absolute;top:0;left:0;}
+.zcarousel ul li>img{display:block;position: absolute;left:50%;transform: translateX(-50%);top:0;}
+.zcarousel .page{position:absolute;;left:50%;bottom:10px;transform: translateX(-50%);}
+.zcarousel .page span{display:inline-block;width: 10px;height: 10px;overflow: hidden;background: #ccc;border-radius: 50%;margin:0 3px;text-indent:-1000px;}
+.zcarousel .page span.active{background: red;}
+.zcarousel > span{position: absolute;top:50%;left:10px;transform:translate(0,-50%);width:30px;height:60px;line-height:60px;text-align:center;color:#fff;}
+.zcarousel .btn-next{left:auto;right:10px;}
+/*
+小图
+ */
+.zcarousel .small{position:absolute;bottom:0;left:50%;transform:translate(-50%,0);height:66px;overflow: hidden;}
+.zcarousel .small li{float:left;}
+.zcarousel .small img{width:66px;float:left;}

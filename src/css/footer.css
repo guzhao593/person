@@ -1,0 +1,53 @@
+#footer { height: auto; padding: 0; padding-bottom: 90px; text-align: center; border-top: 1px solid #e3e3e3; background: none; }
+
+#footer .footad { height: 100px; background-color: #f6f6f6; }
+
+#footer .flist { padding: 26px 0 26px 75px; border-bottom: 1px solid #e6e6e6; }
+
+#footer .flist .flistdl { float: left; width: 95px; height: 114px; padding-left: 42px; text-align: left; border-right: 1px dotted #e6e6e6; }
+
+#footer .flist .flistdl dt { font-size: 16px; line-height: 26px; height: 26px; color: #333; }
+
+#footer .flist .flistdl dd { line-height: 22px; height: 22px; }
+
+#footer .flist .flistdl dd a { font-size: 12px; color: #666; }
+
+#footer .flist .flistdl dd a:hover { color: #f70800; }
+
+#footer .flist dl.nob { border: 0; }
+
+#footer .flist .flistdl2 { float: left; margin-left: 20px; }
+
+#footer .flist .flistdl2 dt { float: left; width: 80px; text-align: center; }
+
+#footer .flist .flistdl2 dt a { text-decoration: none; font-size: 12px; color: #222; outline: none; }
+
+#footer .flist .flistdl2 dt a i { font-style: normal; }
+
+#footer .flist .flistdl2 dt a em { color: #999; font-style: normal; }
+
+#footer .flist .flistdl2 dd { margin: 25px 0 0 25px; float: left; }
+
+#footer .footerinfo { padding-top: 22px; line-height: 22px; text-align: center; margin: 0 auto; width: 1140px; }
+
+#footer .footerinfo p.footer-list { height: 26px; color: #555; }
+
+#footer .footerinfo p.footer-list a { color: #555; padding: 0 8px; font-size: 13px; }
+
+#footer .footerinfo p.footer-list a:hover { color: #f70800; }
+
+#footer .footerinfo .yqlink { width: 960px; margin: 0 auto; }
+
+#footer .footerinfo .yqlink .dlphh { line-height: 22px; height: 22px; overflow: hidden; text-align: left; width: 900px; float: left; }
+
+#footer .footerinfo .yqlink .dlphh em { padding-right: 8px; color: #666; }
+
+#footer .footerinfo .yqlink .dlphh a { padding-right: 8px; color: #555; }
+
+#footer .footerinfo .yqlink .dlphh a:hover { color: #f70800; }
+
+#footer .footerinfo .yqlink .r_button { width: 50px; height: 22px; line-height: 22px; cursor: pointer; color: #555; float: right; }
+
+#footer .footerinfo p.copyright { color: #555; line-height: 22px; }
+
+#footer .footerinfo p.footer-list { height: 26px; color: #555; }

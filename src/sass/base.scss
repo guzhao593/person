@@ -1,0 +1,132 @@
+@import 'var';
+body,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dt,dd,p,div,input,textarea,select,form{padding:0px;margin:0px;}
+ul,li{list-style:none;}
+a{text-decoration:none;color:#222;}
+img{display:block;border:0 none;}
+input,select,textarea,button{outline:none;}
+.clearfix::after{content:'';height:0;display:block;overflow:hidden;visibility:hidden;zoom:1;clear:both;}
+.container{width:1000px;margin:0 auto;}
+body{font-size:12px;}
+em,i{font-style:normal;}
+.fl{float:left;}
+.fr{float:right;}
+
+//产品列表详情
+.golbal_list{
+    padding-bottom:30px;
+
+    ul{
+        li{
+            height:460px;
+            float: left;
+            margin-top: 20px;
+            margin-right: 20px;
+            width: 318px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            &:hover{border: 1px solid $mainColor;}
+            .goods_box {
+                padding: 10px;
+                background-color: #fff;
+                position: relative;
+                .goods_img_box {
+                    position: relative;
+                    width: 298px;
+                    height: 298px;
+                    overflow: hidden;
+                    z-index: 2;
+                    .lazy-loading {
+                        width: 100%;
+                    }
+                }
+                .goods_box_tit{
+                    margin-top: 18px;
+                    height: 52px;
+                    line-height: 26px;
+                    overflow: hidden;
+                    padding: 0 10px;
+                    a{
+                        font-size: 16px;
+                        display: block;
+                        overflow: hidden;
+                        &:hover{
+                            text-decoration:underline;
+                        }
+                    }
+                    .img_tit {
+                        font-size: 16px;
+                        display: block;
+                        overflow: hidden;
+                    }
+                }
+                .goods_subtit {
+                    color: $mainColor;
+                    margin-top: 5px;
+                    overflow: hidden;
+                    height: 16px;
+                    line-height: 16px;
+                    font-size: 12px;
+                    padding: 0 10px;
+                }
+                .goods_yen {
+                    margin-top: 15px;
+                    height: 26px;
+                    padding: 0 10px 3px 10px;
+                    .goods_price {
+                        font-size: 26px;
+                        color: #222;
+                        font-family: arial;
+                        margin-right: 10px;
+                        float:left;
+                        i {
+                            font-size: 20px;
+                            margin-right: 5px;
+                        }
+                    }
+                    .sale_price {
+                        position: relative;
+                        margin-top: 9px;
+                        z-index: 1;
+                        text-decoration: none;
+                        font-size: 12px;
+                        float:left;
+                        .i_pos_abs {
+                            position: absolute;
+                            top: -16px;
+                            left: 0;
+                            width: 205px;
+                            z-index: 2;
+                        }
+                        .five_star {
+                            font-size: 14px;
+                            line-height: 14px;
+                            float:left;
+                        }
+                        .mt5 {
+                            margin-top: 3px;
+                        }
+                        .five_star
+                        {
+                            color: #ff504a;
+                        }
+                    }
+                    .purchased {
+                        color: #666;
+                        margin-top: 9px;
+                        float:right;
+                        i{color:$mainColor;}
+                    }
+                }
+            }
+            .tax_box_bt {
+                height: 32px;
+                line-height: 32px;
+                background-color: #f8f8f8;
+                color: #666;
+                font-size: 12px;
+                border-top: 1px solid #eee;
+                padding: 0 20px;
+            }
+        }
+    }
+}
