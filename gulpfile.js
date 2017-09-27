@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-23 11:27:19
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-09-23 16:24:15
+* @Last Modified time: 2017-09-26 20:18:26
 */
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -25,7 +25,9 @@ var reload      = browserSync.reload;
 // 静态服务器 + 监听 scss/html 文件
 gulp.task('serve', ['sass'], function() {
     browserSync.init({
-        server: "./src"
+        server: "./src",
+        port:666,
+        files:['./src/**/*.html','./src/**/*.css','./src/**/*.js']
     });
     gulp.watch("src/sass/*.scss", ['sass']);
     gulp.watch("src/*.html").on('change', reload);
