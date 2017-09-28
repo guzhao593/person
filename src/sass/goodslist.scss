@@ -1,0 +1,178 @@
+@import 'var';
+
+#main{
+    background-color: #f2f2f2;
+    .container{
+        padding-left:32px;
+        box-sizing:border-box;
+        .bigclass{
+            background-color:#fff;
+            border: 1px solid #ededed;
+            border-top: none;
+            width: 966px;
+            overflow: hidden;
+            height: 86px;
+            padding-left:120px;
+            box-sizing:border-box;
+            li{
+                float:left;position:relative;text-align:center;margin-right:25px;
+                .imghover{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    display:none;
+                    z-index:1;
+                }
+                &:hover .imghover{display:block;}
+                &:hover a{color:$mainColor;}
+            }
+        }
+        .classtitle{
+            height:28px;margin:26px 0  17px 8px;line-height:28px;
+            h2{
+                font-size:26px;color:#333;font-family: "微软雅黑","黑体";
+            }
+        }
+        .goods-list{
+            overflow:hidden;
+            .list-nav{
+                height:56px;margin-left:8px;overflow:hidden;
+                ul{
+                    margin-top:22px;
+                    li{
+                        float:left;    
+                        font-size: 12px;
+                        height: 18px;
+                        position: relative;
+                        cursor: pointer;
+                        line-height: 18px;
+                        span{
+                            padding:0 8px;display: block;
+                            &:hover{
+                                    background: #00bfcf;color: #FFF;
+                            }
+                        }
+                        span.active{background: #00bfcf;color: #FFF;}
+
+                    }
+                    li.navright{
+                        float:right;margin-right:15px;
+                        label{float:left;height:14px;line-height: 1;padding-left:5px;}
+                        input{float:left;height:14px;line-height: 14px;}
+                    }
+                    .clickbg{
+                        height: 30px;
+                        background: url(img/jian.png) center 17px no-repeat;
+                    }
+                    .navprice{
+                        margin-right: 5px;
+                        width: 51px;
+                        background-image: url(img/classify.png);
+                        background-repeat: no-repeat;
+                        padding-left:8px;
+                        box-sizing:border-box;
+                        &:hover{
+                            background-color:#00bfcf;
+                            color: #FFF;
+                        }
+
+                    }
+                    .default{
+                        background-position: 38px -328px;
+                    }
+                    .descend{
+                        background-position: -53px -304px;
+                            color: #FFF;
+                            padding-left: 3px;
+                            line-height: 17px;
+                            height: 22px;
+                    }
+                    .ascend{
+                        background-position: 5px -304px;
+                        width: 43px;
+                        color: #FFF;
+                        line-height: 18px;
+                        padding-left: 8px;
+                        height: 22px;
+                    }
+                }
+            }
+            .golbal_list {
+
+                    width:1000px;
+                ul{
+                    li{margin-top:0px;margin-bottom:20px;margin-right:13px;width:312px;}
+                    }
+            }
+            .pageturn{
+                height:22px;margin-bottom:30px;color:#161616;
+                .pagebox{
+                    float:right;
+                    a{
+                        border: 1px solid #C5C5C5;
+                        display: block;
+                        height: 20px;
+                        line-height: 20px;
+                        text-align: center;
+                        width: 58px;
+                        margin-left: 10px;
+                        background: #FFF;
+                        float:left;
+                        cursor:pointer;
+                        &:hover{
+                            border: 1px solid #EF0307;
+                            color: #EF0307;
+                        }
+                    }
+                    a.active{
+                        background-color: #E7E7E7;
+                    }
+                    .nextpage{
+                        border:0 none;
+                        margin-left:2px;
+                        height:22px;
+                        background: url(img/sjjt.gif) no-repeat 0 -469px;
+                        &:hover{
+                            border:0 none;
+                            margin-left:2px;
+                            background-position: 0 -406px;
+                        }
+
+                    }
+                    .prevpage{
+                        border:0 none;
+                        height:22px;
+                        background: url(img/sjjt.gif) no-repeat 0 -585px;
+                        &:hover{
+                                border:0 none;
+                                background-position: 0 -376px;
+                        }
+                    }
+                    ul{
+                        float:left;margin-left:10px;
+                        li{
+                            float:left;
+                            margin-right: 8px;
+                            border: 1px solid #C5C5C5;
+                            display: inline-block;
+                            height: 20px;
+                            line-height: 20px;
+                            text-align: center;
+                            width: 20px;
+                            background: #FFF;
+                            cursor:pointer;
+                            &:hover{
+                                border: 1px solid #EF0307;
+                                color: #EF0307;
+                            }
+                        }
+                        li.active{
+                            background-color: #E7E7E7;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

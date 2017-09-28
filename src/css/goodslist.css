@@ -1,0 +1,80 @@
+@charset "UTF-8";
+#main { background-color: #f2f2f2; }
+
+#main .container { padding-left: 32px; box-sizing: border-box; }
+
+#main .container .bigclass { background-color: #fff; border: 1px solid #ededed; border-top: none; width: 966px; overflow: hidden; height: 86px; padding-left: 120px; box-sizing: border-box; }
+
+#main .container .bigclass li { float: left; position: relative; text-align: center; margin-right: 25px; }
+
+#main .container .bigclass li .imghover { position: absolute; top: 0; left: 0; display: none; z-index: 1; }
+
+#main .container .bigclass li:hover .imghover { display: block; }
+
+#main .container .bigclass li:hover a { color: #f70800; }
+
+#main .container .classtitle { height: 28px; margin: 26px 0  17px 8px; line-height: 28px; }
+
+#main .container .classtitle h2 { font-size: 26px; color: #333; font-family: "微软雅黑","黑体"; }
+
+#main .container .goods-list { overflow: hidden; }
+
+#main .container .goods-list .list-nav { height: 56px; margin-left: 8px; overflow: hidden; }
+
+#main .container .goods-list .list-nav ul { margin-top: 22px; }
+
+#main .container .goods-list .list-nav ul li { float: left; font-size: 12px; height: 18px; position: relative; cursor: pointer; line-height: 18px; }
+
+#main .container .goods-list .list-nav ul li span { padding: 0 8px; display: block; }
+
+#main .container .goods-list .list-nav ul li span:hover { background: #00bfcf; color: #FFF; }
+
+#main .container .goods-list .list-nav ul li span.active { background: #00bfcf; color: #FFF; }
+
+#main .container .goods-list .list-nav ul li.navright { float: right; margin-right: 15px; }
+
+#main .container .goods-list .list-nav ul li.navright label { float: left; height: 14px; line-height: 1; padding-left: 5px; }
+
+#main .container .goods-list .list-nav ul li.navright input { float: left; height: 14px; line-height: 14px; }
+
+#main .container .goods-list .list-nav ul .clickbg { height: 30px; background: url(img/jian.png) center 17px no-repeat; }
+
+#main .container .goods-list .list-nav ul .navprice { margin-right: 5px; width: 51px; background-image: url(img/classify.png); background-repeat: no-repeat; padding-left: 8px; box-sizing: border-box; }
+
+#main .container .goods-list .list-nav ul .navprice:hover { background-color: #00bfcf; color: #FFF; }
+
+#main .container .goods-list .list-nav ul .default { background-position: 38px -328px; }
+
+#main .container .goods-list .list-nav ul .descend { background-position: -53px -304px; color: #FFF; padding-left: 3px; line-height: 17px; height: 22px; }
+
+#main .container .goods-list .list-nav ul .ascend { background-position: 5px -304px; width: 43px; color: #FFF; line-height: 18px; padding-left: 8px; height: 22px; }
+
+#main .container .goods-list .golbal_list { width: 1000px; }
+
+#main .container .goods-list .golbal_list ul li { margin-top: 0px; margin-bottom: 20px; margin-right: 13px; width: 312px; }
+
+#main .container .goods-list .pageturn { height: 22px; margin-bottom: 30px; color: #161616; }
+
+#main .container .goods-list .pageturn .pagebox { float: right; }
+
+#main .container .goods-list .pageturn .pagebox a { border: 1px solid #C5C5C5; display: block; height: 20px; line-height: 20px; text-align: center; width: 58px; margin-left: 10px; background: #FFF; float: left; cursor: pointer; }
+
+#main .container .goods-list .pageturn .pagebox a:hover { border: 1px solid #EF0307; color: #EF0307; }
+
+#main .container .goods-list .pageturn .pagebox a.active { background-color: #E7E7E7; }
+
+#main .container .goods-list .pageturn .pagebox .nextpage { border: 0 none; margin-left: 2px; height: 22px; background: url(img/sjjt.gif) no-repeat 0 -469px; }
+
+#main .container .goods-list .pageturn .pagebox .nextpage:hover { border: 0 none; margin-left: 2px; background-position: 0 -406px; }
+
+#main .container .goods-list .pageturn .pagebox .prevpage { border: 0 none; height: 22px; background: url(img/sjjt.gif) no-repeat 0 -585px; }
+
+#main .container .goods-list .pageturn .pagebox .prevpage:hover { border: 0 none; background-position: 0 -376px; }
+
+#main .container .goods-list .pageturn .pagebox ul { float: left; margin-left: 10px; }
+
+#main .container .goods-list .pageturn .pagebox ul li { float: left; margin-right: 8px; border: 1px solid #C5C5C5; display: inline-block; height: 20px; line-height: 20px; text-align: center; width: 20px; background: #FFF; cursor: pointer; }
+
+#main .container .goods-list .pageturn .pagebox ul li:hover { border: 1px solid #EF0307; color: #EF0307; }
+
+#main .container .goods-list .pageturn .pagebox ul li.active { background-color: #E7E7E7; }
