@@ -12,10 +12,10 @@
     $conn->set_charset('utf8');
     $pageShowNum = 30;
     $pageNumFirst = ($page-1)*$pageShowNum;
-    $sql = "select * from goods order by $totalNum limit $pageNumFirst,$pageShowNum";
+    $sql = "select * from goods order by $totalNum desc limit $pageNumFirst,$pageShowNum";
     $result = $conn->query($sql);
     $row = $result->fetch_all(MYSQLI_ASSOC);
-    if($totalNum == 'id'){
+    if($totalNum != ''){
         $sql_total = "select count($totalNum) from goods";
         $total = $conn->query($sql_total);
         $total_1 = $total->fetch_all(MYSQLI_NUM);
@@ -25,6 +25,5 @@
         echo json_encode($row,JSON_UNESCAPED_UNICODE);
     }
     $result->close();
-    
     $conn->close();
 ?>
