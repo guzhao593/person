@@ -1,6 +1,7 @@
 <?php
     $page = isset($_GET['page'])?$_GET['page'] : '';
     $totalNum = isset($_GET['totalnum'])?$_GET['totalnum'] : '';
+    $condition = isset($_GET['condition'])?$_GET['condition'] : '';
     $severname = 'localhost';
     $username = 'root';
     $password = '';
@@ -12,7 +13,13 @@
     $conn->set_charset('utf8');
     $pageShowNum = 30;
     $pageNumFirst = ($page-1)*$pageShowNum;
-    $sql = "select * from goods order by $totalNum desc limit $pageNumFirst,$pageShowNum";
+    if($condition == 'descend'){
+        $sql = "select * from goods order by $totalNum*1 desc limit $pageNumFirst,$pageShowNum";
+    }else if($condition == 'ascend'){
+        $sql = "select * from goods order by $totalNum*1 asc limit $pageNumFirst,$pageShowNum";
+    }else{
+        $sql = "select * from goods order by $totalNum asc limit $pageNumFirst,$pageShowNum";
+    }
     $result = $conn->query($sql);
     $row = $result->fetch_all(MYSQLI_ASSOC);
     if($totalNum != ''){

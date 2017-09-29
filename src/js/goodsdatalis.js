@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-26 09:17:02
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-09-28 09:35:06
+* @Last Modified time: 2017-09-29 18:06:57
 */
 
 require(['config'],function(){
@@ -11,11 +11,12 @@ require(['config'],function(){
             $('.guiding a').removeClass('hover').eq(2).addClass('hover');
         });
         $('#footer').load('../html/footer.html');
+        $('.sidebar').load('../html/slider.html');
+        com.slider();
         var id = location.search.slice(1);
         $.get('../api/goodsdatalis.php?'+id,function(data,status){
                 if(status == 'success'){
                     var goodsData = JSON.parse(data)[0];
-                    console.log(data);
                     var opt = {
                         box:$('.sh-goods-gallery'),
                         imgs:goodsData.showimgurl.split(','),
@@ -130,14 +131,17 @@ require(['config'],function(){
                         }
                     }
                     Jqzoom.init();
+
+
+                    //将商品详细数据写入到页面
                     $('.sh-crumbs').html(
-                        `当前位置：
-                    <a href="../index.html" >首页</a>
-                    <code>></code>
-                    <a href="goodslist.html">${goodsData.mainclass}</a>
-                    <code>></code>
-                    <a href="goodslist.html">${goodsData.subclass}</a>
-                    <code>></code> ${goodsData.brand}  ${goodsData.name}${goodsData.spec}`
+                            `当前位置：
+                        <a href="../index.html" >首页</a>
+                        <code>></code>
+                        <a href="html/goodslist.html">${goodsData.mainclass}</a>
+                        <code>></code>
+                        <a href="html/goodslist.html">${goodsData.subclass}</a>
+                        <code>></code> ${goodsData.brand}  ${goodsData.name}${goodsData.spec}`
                         );
                     $('.country-brand a').text(goodsData.brand);
                     $('.sh-goods-parameters h1').text(`${goodsData.brand}  ${goodsData.name}${goodsData.spec}`);
@@ -145,13 +149,16 @@ require(['config'],function(){
                     $('#size span').html(`<i></i>${goodsData.spec}`);
                     $('.price').html(`<i>￥</i>${goodsData.price}`);
                     $('.row').eq(0).find('.details').text(goodsData.name);
-                    console.log($('.row').eq(0).find('div.details'))
                     $('.row').eq(1).find('.details').text(goodsData.brand);
                     $('.row').eq(2).find('.details').text(goodsData.addtime);
                     $('.row').eq(3).find('.details').text(goodsData.spec);
                     $('.pic p').html(goodsData.datalisimgurl.split(',').map(function(item){
                         return `<img   class="lazy-loading" src="${item}" />`;
                     }));
+                    //点击加减按纽
+                    com.btnNum();
+                             
+                        
                 }
         });
     })

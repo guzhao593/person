@@ -39,15 +39,15 @@
 
 #main .container .goods-list .list-nav ul .clickbg { height: 30px; background: url(img/jian.png) center 17px no-repeat; }
 
-#main .container .goods-list .list-nav ul .navprice { margin-right: 5px; width: 51px; background-image: url(img/classify.png); background-repeat: no-repeat; padding-left: 8px; box-sizing: border-box; }
+#main .container .goods-list .list-nav ul .navprice { margin-right: 5px; width: 50px; background-image: url(img/classify.png); background-repeat: no-repeat; padding-left: 8px; box-sizing: border-box; }
 
 #main .container .goods-list .list-nav ul .navprice:hover { background-color: #00bfcf; color: #FFF; }
 
 #main .container .goods-list .list-nav ul .default { background-position: 38px -328px; }
 
-#main .container .goods-list .list-nav ul .descend { background-position: -53px -304px; color: #FFF; padding-left: 3px; line-height: 17px; height: 22px; }
+#main .container .goods-list .list-nav ul .ascend { background-position: -56px -304px; color: #FFF; padding-left: 3px; line-height: 17px; height: 22px; }
 
-#main .container .goods-list .list-nav ul .ascend { background-position: 5px -304px; width: 43px; color: #FFF; line-height: 18px; padding-left: 8px; height: 22px; }
+#main .container .goods-list .list-nav ul .descend { background-position: 0px -304px; color: #FFF; line-height: 18px; padding-left: 8px; height: 22px; }
 
 #main .container .goods-list .golbal_list { width: 1000px; }
 

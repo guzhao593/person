@@ -2,12 +2,15 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:53
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-09-25 20:12:29
+* @Last Modified time: 2017-09-29 16:18:01
 */
 
 require(['config'],function(){
     require(['jquery','zCarousel','common'],function($,z,com){
-        console.log($);
+            $('#header').load('html/header.html');
+            $('#footer').load('html/footer.html');
+            $('.sidebar').load('html/slider.html');
+            com.slider();
             $('.main-carousel').zCarousel({
                 imgs:['img/banner_1.jpg','img/banner_2.jpg'],
                 index:0,

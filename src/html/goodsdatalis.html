@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="../css/header.css" />
         <link rel="stylesheet" type="text/css" href="../css/footer.css" />
         <link rel="stylesheet" type="text/css" href="../css/goodsdatalis.css" />
+        <base href='../' />
         <script type="text/javascript" src="../lib/require.js" data-main="../js/goodsdatalis"></script>
     </head>
     <body>
@@ -126,11 +127,12 @@
                                             <input class="l" id="goodsNumberInput" type="text"  value="1">
                                             <a href="javascript:;" id="addBtn">+</a>
                                         </div>
+                                        <span class="err-info" id="errNum" style="display: none;"><i></i></span>
                                     </dd>
                                 </dl>
                             </div>
                             <div class="add-cart">
-                                <button type="button" class="sh-shopping-cart" data-name="addCartTrigger" data-trigger-status="open" data-thum="/themes/ugo/images/2016/2016_goods/demo/zoom-sm-1.jpg">
+                                <button type="button" class="sh-shopping-cart">
                                     <i></i> 加入购物车
                                 </button>
                                 <p class="merchant_zg"><span>商家直营</span> 此商品由 <span class="mz_zg">莲花水产生鲜专营店</span> 发货，并提供售后服务</p>
@@ -283,6 +285,8 @@
                 </div>
             </div>
         </div>
+        <div class="sidebar-out"></div>
+        <div class="sidebar"></div>
         <div id="footer"></div>
     </body>
 </html>

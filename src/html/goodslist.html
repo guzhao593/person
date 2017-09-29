@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="../css/header.css" />
         <link rel="stylesheet" type="text/css" href="../css/footer.css" />
         <link rel="stylesheet" type="text/css" href="../css/goodslist.css" />
+        <base href='../' />
         <script type="text/javascript" src="../lib/require.js" data-main="../js/goodslist"></script>
     </head>
     <body>
@@ -116,16 +117,16 @@
                         <ul class="clearfix filter_goods">
                             <li>快速查找：</li>
                             <li class="navli clickbg">
-                                <span class="active"> 今日推荐</span>
+                                <span class="id active">今日推荐</span>
                             </li>
                             <li>
                                 <b>|</b>
                             </li>
                             <li class="navli">
-                                <span>销量</span>
+                                <span class="salenum">销量</span>
                             </li>
                             <li class="navli">
-                                <span>上架时间</span>
+                                <span class="addtime">上架时间</span>
                             </li>
                             <li class="navprice default ">
                                 价格
@@ -134,7 +135,7 @@
                                 <b>|</b>
                             </li>
                             <li class="navli">
-                                <span>特惠</span>
+                                <span class="onsale">特惠</span>
                             </li>
                             <li class="navright">
                                 
@@ -169,6 +170,8 @@
                 </div>
             </div>
         </div>
+        <div class="sidebar-out"></div>
+        <div class="sidebar"></div>
         <div id="footer"></div>
     </body>
 </html>
