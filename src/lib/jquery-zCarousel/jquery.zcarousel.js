@@ -214,7 +214,6 @@ $.fn.zCarousel=function(options){
 						params.top = -opt.index*opt.height;
 						$ul.stop(true).animate(params);
 					}else if(opt.type === 'horizontal'){
-						console.log(opt.index)
 						if(opt.index>=(opt.imgs.length+1)){
 							opt.index = 1;
 							$ul.css('left',0);

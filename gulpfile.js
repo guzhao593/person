@@ -25,8 +25,8 @@ var reload      = browserSync.reload;
 // 静态服务器 + 监听 scss/html 文件
 gulp.task('serve', ['sass'], function() {
     browserSync.init({
-        // server: "./src",
-        proxy:'http://localhost:8888',
+        server: "./src",
+        // proxy:'http://localhost:8888',
         port:666,
         files:['./src/**/*.html','./src/**/*.css','./src/**/*.js']
     });
@@ -41,6 +41,7 @@ gulp.task('sass', function() {
         .on('error',sass.logError)
         .pipe(gulp.dest("src/css"))
         .pipe(reload({stream: true}));
+        
 });
 
 gulp.task('default', ['serve']);

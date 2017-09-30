@@ -8,7 +8,8 @@
 require.config({
     paths:{
         'jquery':'../lib/jquery-3.2.1',
-        'zCarousel':'../lib/jquery-zCarousel/jquery.zcarousel'
+        'zCarousel':'../lib/jquery-zCarousel/jquery.zcarousel',
+        'cookie':'../lib/jQuery-cookie'
     },
     shim:{
         'zCarousel':['jquery']

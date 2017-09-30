@@ -9,8 +9,10 @@ require(['config'],function(){
     require(['jquery','zCarousel','common'],function($,z,com){
             $('#header').load('html/header.html');
             $('#footer').load('html/footer.html');
-            $('.sidebar').load('html/slider.html');
-            com.slider();
+            $('.sidebox').load('html/slider.html',function(){
+                com.slider();
+            });
+            
             $('.main-carousel').zCarousel({
                 imgs:['img/banner_1.jpg','img/banner_2.jpg'],
                 index:0,

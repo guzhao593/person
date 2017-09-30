@@ -1,4 +1,5 @@
 @import 'var';
+
 body,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dt,dd,p,div,input,textarea,select,form{padding:0px;margin:0px;}
 ul,li{list-style:none;}
 a{text-decoration:none;color:#222;}
@@ -131,19 +132,109 @@ em,i{font-style:normal;}
     }
 }
 //右侧购物车
+.sidebox{
+    height:100%;
+    padding-left:40px;
+    width:270px;
+    position:fixed;
+    right:-270px;
+    top:0;
+    z-index:1111;
+    .side-content{
+        height:100%;
+        background:#f2f2f2;
+        width:270px;
+        float:right;
+        .show-cart,.show-care{
+            position:relative;
+            height:100%;
+            width:270px;
+            h3{
+            height:36px;
+            background:$mainColor;
+            font-size:15px;
+            line-height:36px;
+            text-indent:1em;
+            color:#fff;
+            margin-top:5px;
+            position:relative;
+            i{
+                position:absolute;
+                right:15px;
+                top:0;
+                font-size:26px;
+                cursor:pointer;
+                &:hover{
+                    color:#333;
+                }
+            }
+            }
+            .empty{
+                height:50px;
+                line-height:50px;
+                text-align:center;
+                color:#333;
+                position:absolute;
+                top:50%;
+                transform:translateY(-50%);
+                width:100%;
+            }
+            .show-goods{
+                margin:10px 0;
+                overflow-y:auto;
+                .goods-box{
+                    margin-bottom:5px;
+                    border-top:1px solid #333;
+                    border-bottom:1px solid #333;
+                    position:relative;
+                    &:hover i{
+                        display:block;
+                    }
+                    i{
+                        height:100%;
+                        width:100%;
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        background-color:rgba(0,0,0,.1);
+                        display:none;
+                    }
+                    img{
+                        float:left;
+                        width:60px;
+                        height:60px;
+                        padding:5px;
+                    }
+                    p{
+                        float:left;
+                        width:183px;
+                        height:30px;
+                        line-height:30px;
+                    }
+                }
+            }
+        }
+        .hide{
+            display:none;
+        }
+        .show{
+            display:block;
+        }
+    }
+}
 .sidebar-out {
     height:100%;
     border-right:4px solid #222;
-    position:fixed;
-    right:0;
+    position:absolute;
+    left:36px;
     top:0;
 }
 .sidebar {
     z-index:999;
     width:36px;
-    position:fixed;
+    position:absolute;
     height:100%;
-    right:0;
+    left:0;
     top:0;
 }
 .sidebar ul {

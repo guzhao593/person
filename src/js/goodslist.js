@@ -10,8 +10,10 @@ require(['config'],function(){
             $('.guiding a').removeClass('hover').eq(2).addClass('hover');
         });
         $('#footer').load('../html/footer.html');
-        $('.sidebar').load('../html/slider.html');
-        com.slider();
+        $('.sidebox').load('../html/slider.html',function(){
+            console.log(333)
+            com.slider();
+        });
         var arr = location.search.slice(1).split('&');
         var page;
         var field;

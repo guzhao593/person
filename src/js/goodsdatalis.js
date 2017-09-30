@@ -11,12 +11,42 @@ require(['config'],function(){
             $('.guiding a').removeClass('hover').eq(2).addClass('hover');
         });
         $('#footer').load('../html/footer.html');
-        $('.sidebar').load('../html/slider.html');
-        com.slider();
+        $('.sidebox').load('../html/slider.html',function(){
+            com.slider();
+        });
+        com.parabola();
         var id = location.search.slice(1);
+        var idNum = Number(id.slice(3));
+        var viewData = [];
+        var cookies = document.cookie;
+        if(cookies.length>0){
+            cookies = cookies.split(';');
+            cookies.forEach(function(item){
+                var temp = item.split('=');
+                if(temp[0] == 'viewData'){
+                    viewData = JSON.parse(temp[1]);
+                }
+            })
+        }
         $.get('../api/goodsdatalis.php?'+id,function(data,status){
                 if(status == 'success'){
                     var goodsData = JSON.parse(data)[0];
+                    var has = false;
+                    viewData.forEach(function(item){
+                        if(item.id == idNum){
+                            has = true;
+                        }
+                    });
+
+                    if(!has){
+                        viewData.push({
+                            id:idNum,
+                            imgurl:goodsData.imgurl,
+                            title:goodsData.name,
+                            price:goodsData.price
+                        });
+                    }
+                    document.cookie = 'viewData='+JSON.stringify(viewData);
                     var opt = {
                         box:$('.sh-goods-gallery'),
                         imgs:goodsData.showimgurl.split(','),
@@ -157,8 +187,7 @@ require(['config'],function(){
                     }));
                     //点击加减按纽
                     com.btnNum();
-                             
-                        
+                    
                 }
         });
     })

@@ -64,9 +64,39 @@ em, i { font-style: normal; }
 
 .golbal_list ul li .tax_box_bt { height: 32px; line-height: 32px; background-color: #f8f8f8; color: #666; font-size: 12px; border-top: 1px solid #eee; padding: 0 20px; }
 
-.sidebar-out { height: 100%; border-right: 4px solid #222; position: fixed; right: 0; top: 0; }
+.sidebox { height: 100%; padding-left: 40px; width: 270px; position: fixed; right: -270px; top: 0; z-index: 1111; }
 
-.sidebar { z-index: 999; width: 36px; position: fixed; height: 100%; right: 0; top: 0; }
+.sidebox .side-content { height: 100%; background: #f2f2f2; width: 270px; float: right; }
+
+.sidebox .side-content .show-cart, .sidebox .side-content .show-care { position: relative; height: 100%; width: 270px; }
+
+.sidebox .side-content .show-cart h3, .sidebox .side-content .show-care h3 { height: 36px; background: #f70800; font-size: 15px; line-height: 36px; text-indent: 1em; color: #fff; margin-top: 5px; position: relative; }
+
+.sidebox .side-content .show-cart h3 i, .sidebox .side-content .show-care h3 i { position: absolute; right: 15px; top: 0; font-size: 26px; cursor: pointer; }
+
+.sidebox .side-content .show-cart h3 i:hover, .sidebox .side-content .show-care h3 i:hover { color: #333; }
+
+.sidebox .side-content .show-cart .empty, .sidebox .side-content .show-care .empty { height: 50px; line-height: 50px; text-align: center; color: #333; position: absolute; top: 50%; transform: translateY(-50%); width: 100%; }
+
+.sidebox .side-content .show-cart .show-goods, .sidebox .side-content .show-care .show-goods { margin: 10px 0; overflow-y: auto; }
+
+.sidebox .side-content .show-cart .show-goods .goods-box, .sidebox .side-content .show-care .show-goods .goods-box { margin-bottom: 5px; border-top: 1px solid #333; border-bottom: 1px solid #333; position: relative; }
+
+.sidebox .side-content .show-cart .show-goods .goods-box:hover i, .sidebox .side-content .show-care .show-goods .goods-box:hover i { display: block; }
+
+.sidebox .side-content .show-cart .show-goods .goods-box i, .sidebox .side-content .show-care .show-goods .goods-box i { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.1); display: none; }
+
+.sidebox .side-content .show-cart .show-goods .goods-box img, .sidebox .side-content .show-care .show-goods .goods-box img { float: left; width: 60px; height: 60px; padding: 5px; }
+
+.sidebox .side-content .show-cart .show-goods .goods-box p, .sidebox .side-content .show-care .show-goods .goods-box p { float: left; width: 183px; height: 30px; line-height: 30px; }
+
+.sidebox .side-content .hide { display: none; }
+
+.sidebox .side-content .show { display: block; }
+
+.sidebar-out { height: 100%; border-right: 4px solid #222; position: absolute; left: 36px; top: 0; }
+
+.sidebar { z-index: 999; width: 36px; position: absolute; height: 100%; left: 0; top: 0; }
 
 .sidebar ul { width: 100%; }
 
