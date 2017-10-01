@@ -11,8 +11,8 @@ require(['config'],function(){
         });
         $('#footer').load('../html/footer.html');
         $('.sidebox').load('../html/slider.html',function(){
-            console.log(333)
-            com.slider();
+            com.slider().init();
+            com.topcart();
         });
         var arr = location.search.slice(1).split('&');
         var page;

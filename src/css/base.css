@@ -80,15 +80,25 @@ em, i { font-style: normal; }
 
 .sidebox .side-content .show-cart .show-goods, .sidebox .side-content .show-care .show-goods { margin: 10px 0; overflow-y: auto; }
 
-.sidebox .side-content .show-cart .show-goods .goods-box, .sidebox .side-content .show-care .show-goods .goods-box { margin-bottom: 5px; border-top: 1px solid #333; border-bottom: 1px solid #333; position: relative; }
+.sidebox .side-content .show-cart .show-goods .goods-box, .sidebox .side-content .show-care .show-goods .goods-box { margin-bottom: 5px; border-top: 1px solid #aaa; border-bottom: 1px solid #999; position: relative; }
 
 .sidebox .side-content .show-cart .show-goods .goods-box:hover i, .sidebox .side-content .show-care .show-goods .goods-box:hover i { display: block; }
 
 .sidebox .side-content .show-cart .show-goods .goods-box i, .sidebox .side-content .show-care .show-goods .goods-box i { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.1); display: none; }
 
+.sidebox .side-content .show-cart .show-goods .goods-box .delbtn, .sidebox .side-content .show-care .show-goods .goods-box .delbtn { position: absolute; right: 25px; top: 50%; display: block; width: 20px; height: 20px; background-color: #f70800; text-align: center; line-height: 20px; color: #fff; border-radius: 50%; transform: translateY(-50%); font-size: 16px; cursor: pointer; }
+
+.sidebox .side-content .show-cart .show-goods .goods-box .delbtn:hover, .sidebox .side-content .show-care .show-goods .goods-box .delbtn:hover { font-weight: bold; color: #bbb; }
+
 .sidebox .side-content .show-cart .show-goods .goods-box img, .sidebox .side-content .show-care .show-goods .goods-box img { float: left; width: 60px; height: 60px; padding: 5px; }
 
 .sidebox .side-content .show-cart .show-goods .goods-box p, .sidebox .side-content .show-care .show-goods .goods-box p { float: left; width: 183px; height: 30px; line-height: 30px; }
+
+.sidebox .side-content .show-cart .gocart p, .sidebox .side-content .show-care .gocart p { height: 30px; text-align: center; font-size: 12px; font-weight: bold; color: #333; line-height: 30px; }
+
+.sidebox .side-content .show-cart .gocart p span, .sidebox .side-content .show-care .gocart p span { color: #f70800; padding: 0 5px; }
+
+.sidebox .side-content .show-cart .gocart .gobtn, .sidebox .side-content .show-care .gocart .gobtn { height: 30px; text-align: center; font-size: 14px; font-weight: bold; color: #fff; line-height: 30px; border-radius: 5px; width: 130px; margin: 0 auto; background-color: #f70800; display: block; }
 
 .sidebox .side-content .hide { display: none; }
 

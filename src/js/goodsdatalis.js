@@ -12,15 +12,15 @@ require(['config'],function(){
         });
         $('#footer').load('../html/footer.html');
         $('.sidebox').load('../html/slider.html',function(){
-            com.slider();
+            com.slider().init();
+            com.topcart();
         });
-        com.parabola();
         var id = location.search.slice(1);
         var idNum = Number(id.slice(3));
         var viewData = [];
         var cookies = document.cookie;
         if(cookies.length>0){
-            cookies = cookies.split(';');
+            cookies = cookies.split('; ');
             cookies.forEach(function(item){
                 var temp = item.split('=');
                 if(temp[0] == 'viewData'){
@@ -31,13 +31,13 @@ require(['config'],function(){
         $.get('../api/goodsdatalis.php?'+id,function(data,status){
                 if(status == 'success'){
                     var goodsData = JSON.parse(data)[0];
+                    com.addCart(idNum,goodsData);
                     var has = false;
                     viewData.forEach(function(item){
                         if(item.id == idNum){
                             has = true;
                         }
                     });
-
                     if(!has){
                         viewData.push({
                             id:idNum,
@@ -46,7 +46,7 @@ require(['config'],function(){
                             price:goodsData.price
                         });
                     }
-                    document.cookie = 'viewData='+JSON.stringify(viewData);
+                    document.cookie = 'viewData='+JSON.stringify(viewData)+';path=/';
                     var opt = {
                         box:$('.sh-goods-gallery'),
                         imgs:goodsData.showimgurl.split(','),
@@ -75,7 +75,6 @@ require(['config'],function(){
                                 $(this).addClass('active').siblings().removeClass('active');
                                 Gallery.show($(this).index());
                            });
-
                            return this;
 
                         },
@@ -186,7 +185,7 @@ require(['config'],function(){
                         return `<img   class="lazy-loading" src="${item}" />`;
                     }));
                     //点击加减按纽
-                    com.btnNum();
+                    com.btnNum($('#goodsNumber .box'));
                     
                 }
         });

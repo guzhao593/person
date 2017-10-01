@@ -66,6 +66,30 @@
 
 .header-logo .topcar .hidecar .carlist p { height: 74px; text-align: center; line-height: 74px; font-size: 12px; }
 
+.header-logo .topcar .hidecar .carlist .gocart { padding-bottom: 10px; overflow: hidden; }
+
+.header-logo .topcar .hidecar .carlist .gocart p { height: 30px; text-align: center; font-size: 12px; font-weight: bold; color: #333; line-height: 30px; float: left; padding-left: 20px; }
+
+.header-logo .topcar .hidecar .carlist .gocart p span { color: #f70800; padding: 0 5px; }
+
+.header-logo .topcar .hidecar .carlist .gocart .gobtn { float: right; margin-right: 10px; height: 30px; text-align: center; font-size: 14px; font-weight: bold; color: #fff; line-height: 30px; border-radius: 5px; width: 130px; background-color: #f70800; display: block; }
+
+.header-logo .topcar .hidecar .carlist .show-goods { margin: 10px 0; overflow-y: auto; max-height: 355px; }
+
+.header-logo .topcar .hidecar .carlist .show-goods .goods-box { border-bottom: 1px solid #ccc; position: relative; padding: 0 10px; }
+
+.header-logo .topcar .hidecar .carlist .show-goods .goods-box:hover i { display: block; }
+
+.header-logo .topcar .hidecar .carlist .show-goods .goods-box i { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.1); display: none; }
+
+.header-logo .topcar .hidecar .carlist .show-goods .goods-box .delbtn { position: absolute; right: 25px; top: 50%; display: block; width: 20px; height: 20px; background-color: #f70800; text-align: center; line-height: 20px; color: #fff; border-radius: 50%; transform: translateY(-50%); font-size: 16px; cursor: pointer; }
+
+.header-logo .topcar .hidecar .carlist .show-goods .goods-box .delbtn:hover { font-weight: bold; color: #bbb; }
+
+.header-logo .topcar .hidecar .carlist .show-goods .goods-box img { float: left; width: 60px; height: 60px; padding: 5px; }
+
+.header-logo .topcar .hidecar .carlist .show-goods .goods-box p { float: left; width: 180px; height: 30px; line-height: 30px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+
 .header-logo .topcar:hover .hidecar { display: block; }
 
 .header-logo .topcar .active i.ijt { background-position: -189px 0px; }

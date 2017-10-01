@@ -1,0 +1,125 @@
+.showflow { float: right; }
+
+.showflow img { height: 82px; }
+
+#main h3 { height: 30px; line-height: 30px; font-size: 14px; font-weight: normal; }
+
+#main .cartlist { border: 1px solid #ddd; }
+
+#main .cartlist .list-head { background: #eee; }
+
+#main .cartlist .list-head div { float: left; }
+
+#main .cartlist .list-head .select { padding: 10px 15px 10px 20px; width: 113px; }
+
+#main .cartlist .list-head .select input[type='checkbox'] { height: 13px; vertical-align: middle; width: 13px; }
+
+#main .cartlist .list-head .select label { margin-left: 20px; }
+
+#main .cartlist .list-head .list-title { padding: 10px 80px 10px 0; width: 280px; }
+
+#main .cartlist .list-head .list-price { width: 140px; padding: 10px 0; }
+
+#main .cartlist .list-head .list-num { width: 70px; text-align: center; padding: 10px 70px 10px 0; }
+
+#main .cartlist .list-head .subtotal { width: 140px; padding: 10px 0; text-align: left; }
+
+#main .cartlist .list-head .list-del { width: 70px; padding: 10px 0; text-align: left; }
+
+#main .cartlist ul .shopping_con { padding: 20px 0 20px 53px; position: relative; display: inline-block; }
+
+#main .cartlist ul .c_meg { float: left; color: #666; }
+
+#main .cartlist ul .c_meg dt { float: left; margin-right: 15px; }
+
+#main .cartlist ul .c_meg dt img { width: 78px; height: 78px; border: 1px solid #e8e8e8; }
+
+#main .cartlist ul .c_meg dd { padding-right: 80px; width: 280px; float: left; }
+
+#main .cartlist ul .c_price { float: left; width: 140px; margin-top: 33px; color: #666; }
+
+#main .cartlist ul .c_price_num { line-height: 20px; }
+
+#main .cartlist ul .c_price_num i { font-size: 14px; font-family: arial; }
+
+#main .cartlist ul .c_tip { color: #f70800; /*margin-top: 10px;*/ border: 1px solid #f70800; padding: 0 5px; width: 48px; }
+
+#main .cartlist ul .c_quantity { float: left; text-align: center; width: 70px; padding-right: 70px; }
+
+#main .cartlist ul .c_quantity span { position: absolute; float: left; margin-right: 8px; background-color: #fff; cursor: pointer; padding: 0 10px 0 30px; height: 26px; line-height: 26px; border: 1px solid #ffc8c8; color: #f70800; }
+
+#main .cartlist ul .c_quantity span i { position: absolute; top: 6px; left: 10px; width: 14px; height: 14px; display: block; background: url(img/datalis_icons.png) -100px -336px no-repeat; }
+
+#main .cartlist ul .c_sum { float: left; width: 140px; color: #666; font-size: 14px; font-weight: bold; margin-top: 33px; }
+
+#main .cartlist ul .c_sum i { font-size: 16px; font-family: arial; }
+
+#main .cartlist ul .c_action { float: left; width: 68px; margin-top: 33px; }
+
+#main .cartlist ul .c_action .i_del { background-position: 0 -125px; width: 18px; height: 20px; float: left; text-indent: -999em; cursor: pointer; background-image: url(img/cart-icons.png); background-repeat: no-repeat; }
+
+#main .cartlist ul .c_action .i_del:hover { background-position: 0 -149px; }
+
+#main .cartlist ul .c_check { position: absolute; left: 20px; top: 54px; z-index: 2; }
+
+#main .cartlist ul .c_amount { margin-top: 33px; }
+
+#main .cartlist ul .c_amount a { float: left; width: 18px; height: 18px; border: 1px solid #ddd; text-align: center; font-size: 20px; line-height: 17px; }
+
+#main .cartlist ul .c_amount a.limit { color: #999; background-color: #f2f2f2; cursor: not-allowed; }
+
+#main .cartlist ul .c_amount input { border: medium none; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; height: 18px; line-height: 18px; width: 30px; float: left; text-align: center; color: #666; }
+
+#main .cart_con { border: 1px solid #e8e8e8; margin-top: 10px; }
+
+#main .cart_con .c_balance { padding: 20px; overflow: hidden; }
+
+#main .cart_con .c_count { float: right; color: #333; }
+
+#main .cart_con .c_count p { line-height: 22px; }
+
+#main .cart_con .c_count p .c_piece { float: right; }
+
+#main .cart_con .c_count p .c_piece i { color: #f70800; font-family: arial; }
+
+#main .cart_con .c_count p .c_lt { width: 65px; text-align: right; display: inline-block; float: right; }
+
+#main .cart_con .c_count p .c_rt { width: 100px; display: inline-block; text-align: right; float: right; }
+
+#main .cart_con .c_count p .fs_14 { font-size: 14px; }
+
+#main .cart_con .c_count p .fw_b { font-weight: bold; }
+
+#main .cart_con .c_count p .c_paid { color: #f70800; font-size: 18px; }
+
+#main .cart_con .c_count p .c_paid i { font-size: 20px; }
+
+#main .cart_con .c_balance_bt { height: 50px; background-color: #f2f2f2; border-top: 1px solid #e8e8e8; }
+
+#main .cart_con .c_balance_bt .b_check { float: left; padding: 17px 0 0 20px; }
+
+#main .cart_con .c_balance_bt .b_check input[type='checkbox'] { height: 13px; vertical-align: middle; width: 13px; }
+
+#main .cart_con .c_balance_bt .b_check label { margin-left: 10px; color: #666; cursor: pointer; }
+
+#main .cart_con .c_balance_bt .b_del { float: left; color: #666; margin-left: 20px; margin-top: 18px; cursor: pointer; }
+
+#main .cart_con .c_balance_bt .b_del i { width: 17px; height: 16px; background-position: -32px -127px; display: inline-block; margin-right: 5px; cursor: pointer; float: left; background-image: url(img/cart-icons.png); background-repeat: no-repeat; }
+
+#main .cart_con .c_balance_bt .b_del i:hover { background-position: -32px -152px; }
+
+#main .cart_con .c_balance_bt .balance_bt { float: right; width: 160px; text-align: center; font-weight: bold; font-size: 18px; color: #fff; background-color: #ff504a; line-height: 50px; }
+
+#main .fixed_balance { display: none; float: right; margin-right: 30px; text-align: right; }
+
+#main .fixed_balance .fix_sum { margin: 5px 0 0 0; }
+
+#main .fixed_balance .fix_sum span { margin-left: 20px; }
+
+#main .fixed_balance .fix_sum span i { color: #f70800; margin: 0 3px; }
+
+#main .fixed_balance .sum_price .fw_b { font-size: 14px; font-weight: bold; }
+
+#main .fixed_balance .sum_price .c_paid { color: #f70800; font-size: 18px; }
+
+#main .fixed_balance .sum_price .c_paid i { font-size: 20px; }

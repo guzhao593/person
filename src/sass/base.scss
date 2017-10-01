@@ -184,8 +184,8 @@ em,i{font-style:normal;}
                 overflow-y:auto;
                 .goods-box{
                     margin-bottom:5px;
-                    border-top:1px solid #333;
-                    border-bottom:1px solid #333;
+                    border-top:1px solid #aaa;
+                    border-bottom:1px solid #999;
                     position:relative;
                     &:hover i{
                         display:block;
@@ -199,6 +199,25 @@ em,i{font-style:normal;}
                         background-color:rgba(0,0,0,.1);
                         display:none;
                     }
+                    .delbtn{
+                        position:absolute;
+                        right:25px;
+                        top:50%;
+                        display:block;
+                        width:20px;
+                        height:20px;
+                        background-color:$mainColor;
+                        text-align:center;
+                        line-height:20px;
+                        color:#fff;
+                        border-radius:50%;
+                        transform:translateY(-50%);
+                        font-size:16px;
+                        cursor:pointer;
+                        &:hover{
+                            font-weight:bold;color:#bbb;
+                        }
+                    }
                     img{
                         float:left;
                         width:60px;
@@ -211,6 +230,17 @@ em,i{font-style:normal;}
                         height:30px;
                         line-height:30px;
                     }
+                }
+            }
+            .gocart{
+                p{
+                    height:30px;text-align:center;font-size:12px;font-weight:bold;color:#333;line-height:30px;
+                    span{
+                        color:$mainColor;padding:0 5px;
+                    }
+                }
+                .gobtn{
+                    height:30px;text-align:center;font-size:14px;font-weight:bold;color:#fff;line-height:30px;border-radius:5px;width:130px;margin:0 auto;background-color:$mainColor;display:block;
                 }
             }
         }

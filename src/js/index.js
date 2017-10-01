@@ -10,7 +10,8 @@ require(['config'],function(){
             $('#header').load('html/header.html');
             $('#footer').load('html/footer.html');
             $('.sidebox').load('html/slider.html',function(){
-                com.slider();
+                com.slider().init();
+                com.topcart();
             });
             
             $('.main-carousel').zCarousel({
