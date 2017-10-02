@@ -60,7 +60,7 @@
                 <div class="cartlist">
                     <div class="list-head clearfix">
                         <div class="select">
-                            <input type="checkbox" name="allselect" id="allselect"><label for="allselect">全选</label>
+                            <input type="checkbox" name="allselect" id="allselect" checked="checked"><label for="allselect">全选</label>
                         </div>
                         <div class="list-title">商品信息</div>
                         <div class="list-price">单价（元）</div>
@@ -77,7 +77,7 @@
                         <div class="c_balance">
                             <!--计算-->
                             <div class="c_count">
-                                <p class="clearfix"><span class="c_rt">¥<i class="fs_14">684</i></span><span class="c_lt">商品金额：</span><span class="c_piece">共<i>3</i>件商品</span></p>
+                                <p class="clearfix"><span class="c_rt">¥<i class="fs_14 totalall">684</i></span><span class="c_lt">商品金额：</span><span class="c_piece">共<i>3</i>件商品</span></p>
                                 <p class="clearfix"><span class="c_rt">¥<i class="fs_14">0</i></span><span class="c_lt">优惠金额：</span></p>
                                 <p class="clearfix"><span class="c_rt c_paid">¥<i>624</i></span><span class="c_lt fw_b">实付金额：</span></p>
                             </div>
@@ -87,13 +87,13 @@
                         <!--结算按钮 浮动  fixed_bt -->
                         <div class="c_balance_bt fixed_bt">
                             <div class="container">
-                                <div class="b_check"><input data-role="all" checked="checked" type="checkbox" id="b-all"><label for="b-all">全选</label></div>
+                                <div class="b_check"><input checked="checked" type="checkbox" id="b-all" name="allselect"><label for="b-all">全选</label></div>
                                 <div class="b_del"><i></i>删除</div>
                                                 <a href="" class="balance_bt">立即结算</a>
                                                 <div class="fixed_balance">
                                     <p class="clearfix fix_sum">
                                         <span class="fix_piece">共<i>3</i>件商品</span>
-                                        <span>商品金额：¥684</span>
+                                        <span class="totalall">商品金额：¥684</span>
                                         <span>优惠金额：-¥0</span>
                                     </p>
                                     <p class="clearfix sum_price">

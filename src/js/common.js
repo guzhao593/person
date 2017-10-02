@@ -165,8 +165,8 @@ define(['jquery'],function($){
         btnNum:function($ele,cart){
             var self = this;
             $ele.each(function(){
-                let $ele = $(this)
-                let input = $ele.find('input');
+                var $ele = $(this);
+                var input = $ele.find('input');
                 input.prev().addClass('limit').siblings().removeClass('limit');
                 $ele.on('click','a,input',function(e){
                     if($(this).text() == '-'){
@@ -219,7 +219,6 @@ define(['jquery'],function($){
                     }
                     function changeNum(){
                         if(cart=='cart'){
-                            console.log(333);
                             var cartData = [];
                             var cookies = document.cookie;
                             if(cookies.length>0){
@@ -400,57 +399,134 @@ define(['jquery'],function($){
                     }
                 })
             }
+            var goodsQty = 0;
+            var totalAll = 0;
             if(cartData.length > 0){
-                $('.cartlist ul').html(cartData.map(function(item){
-                    var sumTotal = item.price*item.qty;
-                    return `<li class="cart_form clearfix" data-id="${item.id}">
-                                <div class="shopping_con">
-                                    <div class="c_meg">
-                                        <dl>
-                                            <dt>
-                                            <a href="html/goodsdatalis.html?id=${item.id}"><img src="${item.imgurl}" width="78" height="78"></a>
-                                            </dt>
-                                            <dd>
-                                                <p class="m_tit">
-                                                    <a href="html/goodsdatalis.html?id=${item.id}">${item.title}</a>
-                                                </p>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                    <div class="c_price">
-                                        <p class="c_price_num">¥<i>${item.price}</i></p>
-                                    </div>
-                                    <div class="c_quantity">
-                                        <div class="c_amount clearfix">
-                                            <a>-</a>
-                                            <input type="text" name="amt" value="${item.qty}">
-                                            <a>+</a>
+                    $('.cartlist ul').html(cartData.map(function(item){
+                        var sumTotal = item.price*item.qty;
+                        goodsQty+=item.qty;
+                        totalAll+=sumTotal;
+                        return `<li class="cart_form clearfix" data-id="${item.id}">
+                                    <div class="shopping_con">
+                                        <div class="c_meg">
+                                            <dl>
+                                                <dt>
+                                                <a href="html/goodsdatalis.html?id=${item.id}"><img src="${item.imgurl}" width="78" height="78"></a>
+                                                </dt>
+                                                <dd>
+                                                    <p class="m_tit">
+                                                        <a href="html/goodsdatalis.html?id=${item.id}">${item.title}</a>
+                                                    </p>
+                                                </dd>
+                                            </dl>
                                         </div>
-                                        <span  class="err-info" style="display: none;"><i></i></span>
+                                        <div class="c_price">
+                                            <p class="c_price_num">¥<i>${item.price}</i></p>
+                                        </div>
+                                        <div class="c_quantity">
+                                            <div class="c_amount clearfix">
+                                                <a>-</a>
+                                                <input type="text" name="amt" value="${item.qty}">
+                                                <a>+</a>
+                                            </div>
+                                            <span  class="err-info" style="display: none;"><i></i></span>
+                                        </div>
+                                        <div class="c_sum">
+                                            <p>¥<i>${sumTotal}</i></p>
+                                        </div>
+                                        <div class="c_action">
+                                            <i class="i_del">删除</i>
+                                        </div>
+                                        <div class="c_check">
+                                            <input type="checkbox" name="select" checked="checked">
+                                        </div>
                                     </div>
-                                    <div class="c_sum">
-                                        <p>¥<i>${sumTotal}</i></p>
-                                    </div>
-                                    <div class="c_action">
-                                        <i class="i_del">删除</i>
-                                    </div>
-                                    <div class="c_check">
-                                        <input type="checkbox">
-                                    </div>
-                                </div>
-                            </li>`;
-                }).join('')).find('.c_amount input').each(function(){
-                var inp = $(this);
-                if(inp.val()*1 <= 1){
-                    inp.prev().addClass('limit').siblings().removeClass('limit');
-                }else if(inp.val()*1 >= 6){
-                    inp.next().addClass('limit').siblings().removeClass('limit');
-                }else{
-                    inp.siblings().removeClass('limit');
-                }
-            });
+                                </li>`;
+                    }).join('')).find('.c_amount input').each(function(){
+                    var inp = $(this);
+                    if(inp.val()*1 <= 1){
+                        inp.prev().addClass('limit').siblings().removeClass('limit');
+                    }else if(inp.val()*1 >= 6){
+                        inp.next().addClass('limit').siblings().removeClass('limit');
+                    }else{
+                        inp.siblings().removeClass('limit');
+                    }
+                });
+            }else{
+                $('.cartlist ul').html(`<li class="empty">你的购物车是空的</li>`);
             }
+            $('.c_piece i').text(goodsQty);
+            $('.totalall').text(totalAll);
+            $('.c_paid i').text(totalAll);
             return this;
+        },
+        cartchange:function(){
+            var self = this;
+            var Cart = {
+                init:function(){
+                    var $this = this;
+                    var delBtn = $('.i_del');
+                    delBtn.click(function(){
+                        $this.delete($(this));
+                    });
+                    var $select = $('[name=select]');
+                    var $selectAll = $('[name=allselect]');
+                    $('#main').on('click','input,div',function(){
+                        if($(this).attr('name') == 'select'){
+                            $(this).prop('checked');
+                            var checkedQty = 0;
+                            $select.each(function(){
+                                if(this.checked){
+                                    checkedQty++;
+                                }
+                            })
+                            if(checkedQty == $select.length){
+                                $selectAll.prop('checked',true);
+                            }else{
+                                $selectAll.prop('checked',false);
+                            }
+                        }
+                        if($(this).attr('name') == 'allselect'){
+                            $(this).prop('checked');
+                            $selectAll.prop('checked',$(this).prop('checked'));
+                            $select.prop('checked',$(this).prop('checked'));
+                            
+                        }
+                        if($(this).hasClass('b_del')){
+                            $select.each(function(){
+                                if(this.checked){
+                                    $this.delete($(this)); 
+                                }
+                            })
+                        }
+                    });
+                    return this;
+                },
+                delete:function($ele){
+                    var cartData = [];
+                    var cookies = document.cookie;
+                    if(cookies.length>0){
+                        cookies = cookies.split('; ');
+                        cookies.forEach(function(item){
+                            var temp = item.split('=');
+                            if(temp[0] == 'cartData'){
+                                cartData = JSON.parse(temp[1]);
+                            }
+                        })
+                    }
+                    cartData.forEach(function(item,idx){
+                        if(item.id == $ele.parents('.cart_form').attr('data-id')){
+                            cartData.splice(idx,1);
+                        }
+                    });
+                    var date = new Date();
+                    date.setDate(date.getDate() + 100);
+                    document.cookie ='cartData='+JSON.stringify(cartData)+';path=/;expires=' +date.toUTCString();
+                    self.slider().showCartGoods();
+                    self.cartshow();
+                }
+            }
+            return Cart.init();
         }
     }
 });

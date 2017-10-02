@@ -28,6 +28,8 @@
 
 #main .cartlist ul .shopping_con { padding: 20px 0 20px 53px; position: relative; display: inline-block; }
 
+#main .cartlist ul .empty { height: 100px; text-align: center; line-height: 100px; }
+
 #main .cartlist ul .c_meg { float: left; color: #666; }
 
 #main .cartlist ul .c_meg dt { float: left; margin-right: 15px; }
@@ -46,6 +48,14 @@
 
 #main .cartlist ul .c_quantity { float: left; text-align: center; width: 70px; padding-right: 70px; }
 
+#main .cartlist ul .c_quantity .c_amount { margin-top: 33px; }
+
+#main .cartlist ul .c_quantity .c_amount a { float: left; width: 18px; height: 18px; border: 1px solid #ddd; text-align: center; font-size: 20px; line-height: 17px; }
+
+#main .cartlist ul .c_quantity .c_amount a.limit { color: #999; background-color: #f2f2f2; cursor: not-allowed; }
+
+#main .cartlist ul .c_quantity .c_amount input { border: medium none; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; height: 18px; line-height: 18px; width: 30px; float: left; text-align: center; color: #666; }
+
 #main .cartlist ul .c_quantity span { position: absolute; float: left; margin-right: 8px; background-color: #fff; cursor: pointer; padding: 0 10px 0 30px; height: 26px; line-height: 26px; border: 1px solid #ffc8c8; color: #f70800; }
 
 #main .cartlist ul .c_quantity span i { position: absolute; top: 6px; left: 10px; width: 14px; height: 14px; display: block; background: url(img/datalis_icons.png) -100px -336px no-repeat; }
@@ -61,14 +71,6 @@
 #main .cartlist ul .c_action .i_del:hover { background-position: 0 -149px; }
 
 #main .cartlist ul .c_check { position: absolute; left: 20px; top: 54px; z-index: 2; }
-
-#main .cartlist ul .c_amount { margin-top: 33px; }
-
-#main .cartlist ul .c_amount a { float: left; width: 18px; height: 18px; border: 1px solid #ddd; text-align: center; font-size: 20px; line-height: 17px; }
-
-#main .cartlist ul .c_amount a.limit { color: #999; background-color: #f2f2f2; cursor: not-allowed; }
-
-#main .cartlist ul .c_amount input { border: medium none; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; height: 18px; line-height: 18px; width: 30px; float: left; text-align: center; color: #666; }
 
 #main .cart_con { border: 1px solid #e8e8e8; margin-top: 10px; }
 
