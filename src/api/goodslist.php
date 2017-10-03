@@ -1,16 +1,8 @@
 <?php
+    include 'server.php';
     $page = isset($_GET['page'])?$_GET['page'] : '';
     $totalNum = isset($_GET['totalnum'])?$_GET['totalnum'] : '';
     $condition = isset($_GET['condition'])?$_GET['condition'] : '';
-    $severname = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'ugoshop';
-    $conn = new mysqli($severname,$username,$password,$dbname);
-    if($conn->connect_error){
-        die('连接失败：' . $conn->connect_error);
-    }
-    $conn->set_charset('utf8');
     $pageShowNum = 30;
     $pageNumFirst = ($page-1)*$pageShowNum;
     if($condition == 'descend'){

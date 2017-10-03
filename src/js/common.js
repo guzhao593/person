@@ -527,6 +527,86 @@ define(['jquery'],function($){
                 }
             }
             return Cart.init();
+        },
+        register:function(){
+            var Reg = {
+                init:function(){
+                    var self = this;
+                    self.verifycode();
+                    $('.container').on('click','li,input',function(){
+                        if($(this).hasClass('regnav1')){
+                                $('.phonereg').css('display','block').next().css('display','none');
+                                $(this).addClass('on').next().removeClass('on').find('span').removeClass('icon6').addClass('icon3');
+                                $(this).find('span').removeClass('icon1').addClass('icon4');
+                        }
+                        if($(this).hasClass('regnav2')){
+                                $('.phonereg').css('display','none').next().css('display','block');
+                                $(this).addClass('on').prev().removeClass('on').find('span').removeClass('icon4').addClass('icon1');
+                                $(this).find('span').removeClass('icon3').addClass('icon6');
+                        }
+                        if($(this).hasClass('text1')){
+                             self.showborder($(this),true);
+                             $(this).next().addClass('ztips').removeClass('etips').css('display','block').text('请输入常用手机号，避免忘记');
+                            $(this).blur(function(){
+                                self.showborder($(this),false);
+                                var val = $(this).val().trim();
+                                if(val == ''){
+                                    $('.ztips').addClass('etips').removeClass('ztips').text('手机号码不能为空');
+                                }else if(self.judge('tel',val) == 'error'){
+                                    $('.ztips').addClass('etips').removeClass('ztips').text('你的输入的手机号码有误！请重新输入');
+                                }
+                                
+                            })
+                        }
+
+                        
+                    });
+                },
+                showborder:function($ele,boolean){
+                    if(boolean){
+                        $ele.css('border-color','rgb(95, 193, 0)');
+                    }else{
+                        $ele.css('border-color','rgb(162, 162, 162)');
+                    }
+                },
+                judge:function(thing,val){
+                    console.log(/^1[3|4|5|8][0-9]\d{8}$/.test(val));
+                    if(thing == 'tel'){
+                        if(/^1[3|4|5|8][0-9]\d{8}$/.test(val)){
+                            $.get('../api/register.php?username='+val,function(data,status){
+                                if(status == 'success'){
+                                    if(data != '[]'){
+                                        $('.text1').next().addClass('etips').removeClass('ztips').text('你的手机号码已经注册过了！');
+                                    }else{
+                                        $('.text1').next().addClass('ztips').css('display','block').text('恭喜您,你的手机号码可以注册').removeClass('etips');
+                                    }
+                                }
+                            })
+                        }else{
+                            return 'error';
+                        }
+                    }
+                },
+                verifycode:function(){
+                    var codeArr = [];
+                    for(var i = 48 ; i<=122;i++){
+                        codeArr.push(String.fromCharCode(i));
+                        if(i == 57){
+                            i= 64;
+                        }
+                        if(i == 90){
+                            i = 96;
+                        }
+                    }
+                    var codeStr = '';
+                    for(var j = 0; j<4;j++){
+                        codeStr += codeArr[Math.floor(Math.random()*codeArr.length)];
+                    }
+                    $('.verifycode').text(codeStr);
+                    return this;
+                }
+            }
+            return Reg.init();
         }
     }
 });

@@ -1,0 +1,4 @@
+<?php
+	inclued 'server.php';
+	
+?>

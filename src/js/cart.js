@@ -17,8 +17,8 @@ require(['config'],function(){
         })
         $(window).scroll(function(){
             var carHeight = $('#footer').offset().top -window.innerHeight-51;
-            console.log($(window).scrollTop()<=50 || $(window).scrollTop() >= carHeight);
             if($(window).scrollTop()>50 && $(window).scrollTop() < carHeight){
+                $('.fixed_balance').css('display','block');
                 $('.fixed_bt').css({
                     position:'fixed',
                     bottom:'0px',
@@ -26,12 +26,11 @@ require(['config'],function(){
                     width:'100%',
                     zIdex:100
                 });
-                $('.fixed_balance').css('display','block');
             }else if($(window).scrollTop()<=50 || $(window).scrollTop() >= carHeight){
+                $('.fixed_balance').css('display','none');
                 $('.fixed_bt').css({
                     position:'static'
                 });
-                $('.fixed_balance').css('display','none');
             }
         });
     });
