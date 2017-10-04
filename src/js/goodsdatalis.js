@@ -9,11 +9,13 @@ require(['config'],function(){
     require(['jquery','common'],function($,com){
         $('#header').load('../html/header.html',function(){
             $('.guiding a').removeClass('hover').eq(2).addClass('hover');
+            com.showlogin();
+            com.topcart();
         });
         $('#footer').load('../html/footer.html');
         $('.sidebox').load('../html/slider.html',function(){
             com.slider().init();
-            com.topcart();
+            com.showlogin();
         });
         var id = location.search.slice(1);
         var idNum = Number(id.slice(3));

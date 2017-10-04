@@ -532,35 +532,140 @@ define(['jquery'],function($){
             var Reg = {
                 init:function(){
                     var self = this;
-                    self.verifycode();
-                    $('.container').on('click','li,input',function(){
+                    var $userClass = $('.phonereg');
+                    self.$userClass = $userClass;
+                    inputtest($userClass);
+                    self.verifycode($('.verifycode'));
+                    $('.container').on('click','li,input,a',function(){
                         if($(this).hasClass('regnav1')){
+                                $userClass = $('.phonereg');
+                                $userClass.find('.regk,.yhm_text1').val('');
+                                $userClass.find('.ztips,.etips').css('display','none');
+                                self.$userClass = $userClass;
+                                self.verifycode($('.verifycode'));
+                                inputtest($userClass);
                                 $('.phonereg').css('display','block').next().css('display','none');
                                 $(this).addClass('on').next().removeClass('on').find('span').removeClass('icon6').addClass('icon3');
                                 $(this).find('span').removeClass('icon1').addClass('icon4');
                         }
                         if($(this).hasClass('regnav2')){
+                                $userClass = $('.TVactive');
+                                $userClass.find('.regk,.yhm_text1').val('');
+                                $userClass.find('.ztips,.etips').css('display','none');
+                                self.$userClass = $userClass;
+                                self.verifycode($('.verifycode'));
+                                inputtest($userClass);
                                 $('.phonereg').css('display','none').next().css('display','block');
                                 $(this).addClass('on').prev().removeClass('on').find('span').removeClass('icon4').addClass('icon1');
                                 $(this).find('span').removeClass('icon3').addClass('icon6');
                         }
-                        if($(this).hasClass('text1')){
-                             self.showborder($(this),true);
-                             $(this).next().addClass('ztips').removeClass('etips').css('display','block').text('请输入常用手机号，避免忘记');
-                            $(this).blur(function(){
-                                self.showborder($(this),false);
-                                var val = $(this).val().trim();
-                                if(val == ''){
-                                    $('.ztips').addClass('etips').removeClass('ztips').text('手机号码不能为空');
-                                }else if(self.judge('tel',val) == 'error'){
-                                    $('.ztips').addClass('etips').removeClass('ztips').text('你的输入的手机号码有误！请重新输入');
-                                }
-                                
-                            })
+                        //更换验证码
+                        if($(this).hasClass('code_refresh')){
+                            self.verifycode(self.$userClass.find('.verifycode'));
                         }
+                        if($(this).hasClass('ymasage')){
+                            self.$userClass.find('.ymasagecode').css({
+                                display:'inline-block',
+                                fontSize:'14px'
+                            }).text('5秒后收到');
+                            var second = 0;
+                            var timer = setInterval(function(){
+                                second++;
+                                if(second >= 5){
+                                    clearInterval(timer);
+                                    self.$userClass.find('.ymasagecode').css('fontSize','18px');
+                                    self.verifycode(self.$userClass.find('.ymasagecode'));
+                                    return;
+                                }
+                                self.$userClass.find('.ymasagecode').text(`${5-second}秒后收到`);
+                            },1000);  
+                        }
+                        if($(this).hasClass('registsubmit')){
+                            self.submit(self.$userClass);
+                        }
+                   
+                    })
 
+
+                    function inputtest(){
+                        //手机注册，输入手机号
+                        $userClass.find('.text1').focus(function(){
+                            self.showborder($(this),true);
+                            $(this).next().addClass('ztips').removeClass('etips').css('display','block').text('请输入常用手机号，避免忘记');
+                        }).blur(function(){
+                            self.showborder($(this),false);
+                            var val_user = $(this).val().trim();
+                            if(val_user == ''){
+                                $(this).next().addClass('etips').removeClass('ztips').text('手机号码不能为空');
+                            }else if(!self.judge('tel',val_user)){
+                                $(this).next().addClass('etips').removeClass('ztips').text('你的输入的手机号码有误！请重新输入');
+                            }
+                        })
+                        //输入验证码
+                        $userClass.find('.text2').focus(function(){
+                            self.showborder($(this),true);
+                            $(this).next().next().addClass('ztips').removeClass('etips').css('display','block').text('请输入验证码,不区分大小写');
+                        }).blur(function(){
+                            self.showborder($(this),false);
+                            var  val_code = $(this).val().trim();
+                            if(val_code == ''){
+                                $(this).next().next().addClass('etips').removeClass('ztips').text('验证码不能为空');
+                            }else if(self.judge('code',val_code)){
+                                $(this).next().next().addClass('ztips').removeClass('etips').text('验证码输入正确');
+                            }else{
+                                $(this).next().next().addClass('etips').removeClass('ztips').text('验证码输入错误,请重新输入');
+                            }
+                        });
+                        //设置密码
+                        $userClass.find('.text3').focus(function(){
+                            self.showborder($(this),true);
+                            $(this).next().addClass('ztips').removeClass('etips').css('display','block').text('6-20位字符，可使用字母、数字或符号的组合');
+                        }).blur(function(){
+                            self.showborder($(this),false);
+                            var  val_password = $(this).val().trim();
+                            if(val_password == ''){
+                                $(this).next().addClass('etips').removeClass('ztips').text('密码不能为空');
+                            }else if(self.judge('password',val_password)){
+                                $(this).next().addClass('ztips').removeClass('etips').text('密码格式正确');
+                            }else{
+                                $(this).next().addClass('etips').removeClass('ztips').text('密码输入格式有误,请重新输入');
+                            }
+                        });
                         
-                    });
+                        $userClass.find('.text4').focus(function(){
+                            self.showborder($(this),true);
+                            $(this).next().addClass('ztips').removeClass('etips').css('display','block').text('请再次输入密码');
+                        }).blur(function(){
+                            self.showborder($(this),false);
+                            var  val_passwordAgain = $(this).val().trim();
+                            if(val_passwordAgain == ''){
+                                $(this).next().addClass('etips').removeClass('ztips').text('密码不能为空');
+                            }else if(self.judge('passwordagain',val_passwordAgain)){
+                                $(this).next().addClass('ztips').removeClass('etips').text('两次密码相同');
+                            }else{
+                                $(this).next().addClass('etips').removeClass('ztips').text('两次密码输入不相同，请再次确认密码！');
+                            }
+                        });
+                        $userClass.find('.text5').focus(function(){
+                            self.showborder($(this),true);
+                            if($('.ymasagecode').css('display') == 'none'){
+                                $(this).next().next().addClass('etips').removeClass('ztips').css('display','block').text('请点击获取短信验证码');
+                            }else{
+                                $(this).next().next().addClass('ztips').removeClass('etips').css('display','block').text('请输入短信验证码');
+                            }
+                        }).blur(function(){
+                            self.showborder($(this),false);
+                            var  val_ymasagecode = $(this).val().trim();
+                            if(val_ymasagecode == ''){
+                                $(this).next().next().addClass('etips').removeClass('ztips').text('短信验证码不能为空');
+                            }else if(self.judge('ymasagecode',val_ymasagecode)){
+                                $(this).next().next().addClass('ztips').removeClass('etips').text('短信验证码输入正确');
+                            }else{
+                                $(this).next().next().addClass('etips').removeClass('ztips').text('短信验证码输入不正确，请重新输入！');
+                            }
+                        });
+                    }
+                        
                 },
                 showborder:function($ele,boolean){
                     if(boolean){
@@ -570,24 +675,53 @@ define(['jquery'],function($){
                     }
                 },
                 judge:function(thing,val){
-                    console.log(/^1[3|4|5|8][0-9]\d{8}$/.test(val));
+                    var self = this;
                     if(thing == 'tel'){
                         if(/^1[3|4|5|8][0-9]\d{8}$/.test(val)){
-                            $.get('../api/register.php?username='+val,function(data,status){
+                            $.get('../api/register.php?usernametest='+val,function(data,status){
                                 if(status == 'success'){
                                     if(data != '[]'){
-                                        $('.text1').next().addClass('etips').removeClass('ztips').text('你的手机号码已经注册过了！');
+                                        self.$userClass.find('.text1').next().addClass('etips').removeClass('ztips').text('你的手机号码已经注册过了！');
                                     }else{
-                                        $('.text1').next().addClass('ztips').css('display','block').text('恭喜您,你的手机号码可以注册').removeClass('etips');
+                                        self.$userClass.find('.text1').next().addClass('ztips').css('display','block').text('恭喜您,你的手机号码可以注册').removeClass('etips');
                                     }
                                 }
                             })
+                            return true;
                         }else{
-                            return 'error';
+                            return false;
+                        }
+                    }
+                    if(thing == 'code'){
+                        if(val.toLowerCase() == self.$userClass.find('.verifycode').text().toLowerCase()){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                    if(thing == 'password'){
+                        if(/^[\S]{6,20}$/.test(val)){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                    if(thing == 'passwordagain'){
+                        if(val === self.$userClass.find('.text3').val().trim()){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                    if(thing == 'ymasagecode'){
+                        if(val === self.$userClass.find('.ymasagecode').text().toLowerCase()){
+                            return true;
+                        }else{
+                            return false;
                         }
                     }
                 },
-                verifycode:function(){
+                verifycode:function($ele){
                     var codeArr = [];
                     for(var i = 48 ; i<=122;i++){
                         codeArr.push(String.fromCharCode(i));
@@ -602,11 +736,104 @@ define(['jquery'],function($){
                     for(var j = 0; j<4;j++){
                         codeStr += codeArr[Math.floor(Math.random()*codeArr.length)];
                     }
-                    $('.verifycode').text(codeStr);
+                    $ele.text(codeStr);
                     return this;
+                },
+                submit:function($ele){
+                    var emptyJs = 0;
+                    $ele.find('.regk,.yhm_text1').each(function(){
+                        if($(this).val().trim() == ''){
+                            return emptyJs=1;
+                        }
+                    });
+                    if(emptyJs == 1){
+                        return $ele.find('.submittips').css('display','block').text('输入不能有空，请确认无误！');
+                    }
+                    if($ele.find('.etips').length >0){
+                        return $ele.find('.submittips').css('display','block').text($ele.find('.etips').get(0).innerText);
+                    }
+                    if(!$ele.find('.checkx').prop('checked')){
+                        return $ele.find('.submittips').css('display','block').text('请勾选我已阅读并同意《优品惠用户服务承诺》');
+                    }
+                    $.get('../api/register.php?username='+$ele.find('.text1').val().trim()+'&password='+$ele.find('.text3').val().trim(),function(data,status){
+                        if(status == 'success'){
+                            if(data){
+                                document.cookie = 'username='+ $ele.find('.text1').val().trim()+ ';path=/';
+                                $('.land_con').html(`<p class='success'>恭喜您，注册成功！<a href="">点击返回首页</a></p>`);
+                            }
+                        }
+                    });
                 }
             }
             return Reg.init();
+        },
+        showlogin:function(){
+            var cookies = document.cookie.split('; ');
+            cookies.forEach(function(item){
+                var temp = item.split('=');
+                if(temp[0] == 'username'){
+                    if(temp[1] != ''){
+                        $('.h_register').addClass('username').removeClass('h_register').html(`<a>${temp[1]}</a>`);
+                        $('.h_login').addClass('exit').removeClass('h_login').html(`<a>退出</a>`);
+                        $('.slide-login-btn').html(`<a>${temp[1]}</a>`);
+                    }
+                }
+                $('.top-nav-tool').on('mouseover','span',function(){
+                    if($(this).hasClass('exit')){
+                        $(this).click(function(){
+                            document.cookie = 'username='+ ';path=/';
+                            $(this).addClass('h_login').removeClass('exit').html(`<a href="html/login.html">登录</a>`);
+                            $('.username').addClass('h_register').removeClass('username').html(`<a href="html/register.html">注册</a>`);
+                            $('.slide-login-btn').html('你好！请<a href="html/login.html">登录</a>|<a href="html/register.html">注册</a>');
+                        });
+                    }
+                });
+            });
+        },
+        login:function(){
+            var cookies = document.cookie.split('; ');
+            cookies.forEach(function(item){
+                var temp = item.split('=');
+                if(temp[0] == 'usernamesave'){
+                    $('.text1').val(temp[1]);
+                }
+            });
+            $('#button').click(function(){
+                $('.text1').next().css('display','none');
+                $('.text2').next().css('display','none');
+                if($('.text1').val().trim() == ''){
+                    $('.text1').next().css('display','block').text('用户名不能为空');
+                    return;
+                }
+                if($('.text2').val().trim() == ''){
+                    $('.text1').next().css('display','none');
+                    $('.text2').next().css('display','block').text('密码不能为空');
+                    return;
+                }
+                $.get('../api/login.php?username='+$('.text1').val().trim(),function(data,status){
+                    if(status == 'success'){
+                        var data = JSON.parse(data);
+                        console.log(data);
+                        if(data.length == 0){
+                            $('.text1').next().css('display','block').text('用户名不存在');
+                        }else{
+                            if(data[0].password != $('.text2').val().trim()){
+                                $('.text2').next().css('display','block').text('密码不正确');
+                            }else{
+                                if($('.checkbox').prop('checked')){
+                                    var date = new Date();
+                                    date.setDate(date.getDate() + 30);
+                                    document.cookie = 'usernamesave='+ $('.text1').val().trim() +';expires='+date.toUTCString();
+                                }
+                                    document.cookie = 'username='+ $('.text1').val().trim() +';path=/';
+                                    window.location = '../index.html';
+                            }
+                        }
+                        
+                    }
+                });
+                
+            });
         }
     }
 });

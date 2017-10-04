@@ -1,10 +1,14 @@
 require(['config'],function(){
     require(['jquery','common'],function($,com){
+        $('#header').load('../html/header.html .top-nav',function(){
+            com.showlogin();
+        });
         $('#footer').load('../html/footer.html');
         $('.sidebox').load('../html/slider.html',function(){
             com.slider().init();
+            com.cartshow();
+            com.showlogin();
         });
-        com.cartshow();
         $('.cartlist ul').mouseover(function(e){
             if(e.target.parentNode.className.toLowerCase() == 'c_amount clearfix'){
                 $(e.target).click(function(){

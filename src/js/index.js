@@ -7,11 +7,14 @@
 
 require(['config'],function(){
     require(['jquery','zCarousel','common'],function($,z,com){
-            $('#header').load('html/header.html');
+            $('#header').load('html/header.html',function(){
+                com.showlogin();
+                com.topcart();
+            });
             $('#footer').load('html/footer.html');
             $('.sidebox').load('html/slider.html',function(){
                 com.slider().init();
-                com.topcart();
+                com.showlogin();
             });
             
             $('.main-carousel').zCarousel({
