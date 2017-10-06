@@ -1,0 +1,68 @@
+@charset "UTF-8";
+#main .container { width: 968px; margin: 0 auto; font: 12px '宋体'; padding-bottom: 50px; }
+
+#main .container .EWM { position: absolute; top: 152px; left: 50%; margin: 0 0 0 -628px; }
+
+#main .container .cg { color: #0089CF; }
+
+#main .container .land_logo { height: 112px; }
+
+#main .container .land_logo .kefuphonenum { color: #525252; padding-top: 70px; }
+
+#main .container .land_logo .kefuphonenum a { color: #0089cf; }
+
+#main .container .land_logo .kefuphonenum strong { font: 15px '微软雅黑'; color: #eb0007; font-weight: normal; }
+
+#main .container .land_logo .land_logo_img { height: 57px; margin-top: 31px; }
+
+#main .container .land_logo .land_logo_img a { display: block; height: 57px; overflow: hidden; width: 185px; background: url(img/welland.gif) 0 0 no-repeat; }
+
+#main .container .land_logo .land_logo_img span { display: block; height: 57px; overflow: hidden; width: 169px; background: url(img/welland.gif) 0 -58px no-repeat; }
+
+#main .container .land_con { border: 2px solid #ff8400; width: 964px; }
+
+#main .container .land_con_l { width: 532px; padding-left: 133px; _padding-left: 127px; color: #666666; padding-top: 62px; }
+
+#main .container .land_con_l .land_item { width: 351px; height: 65px; }
+
+#main .container .land_con_l .land_item span { display: block; height: 12px; padding-bottom: 7px; }
+
+#main .container .land_con_l .land_item .item-ifo { position: relative; z-index: 1; }
+
+#main .container .land_con_l .land_item .item-ifo .yhm_text { font: 13px Arial; color: #222; width: 315px; padding: 5px 25px 5px 10px; height: 25px; line-height: 25px; border: 1px solid #a2a2a2; }
+
+#main .container .land_con_r { width: 217px; background-color: #fff6ec; height: 316px; padding-left: 82px; padding-top: 58px; }
+
+#main .container .i-name { position: absolute; top: 8px; right: 9px; z-index: 10; }
+
+#main .container .land_ico, #main .container .land_ico4, #main .container .land_ico6, #main .container .land_ico7 { width: 16px; height: 16px; background: url(img/welland.gif) 0 -229px no-repeat; }
+
+#main .container .land_ico2, #main .container .land_ico3, #main .container .land_ico5, #main .container .land_ico9, #main .container .land_ico10 { width: 16px; height: 19px; background: url(img/welland.gif) 0 -251px no-repeat; }
+
+#main .container .land_item2 { width: 351px; height: 31px; }
+
+#main .container .land_item2 .dui { width: 16px; height: 15px; background: url(img/welland.gif) 0 -275px no-repeat; margin-top: 5px; }
+
+#main .container .land_item2 .mjy { height: 13px; line-height: 13px; display: block; margin-left: 6px; _height: 15px; _line-height: 15px; }
+
+#main .container .land_item2 .checkbox { display: block; width: 13px; height: 13px; }
+
+#main .container .land_item2 .wjma a { color: #0089cf; }
+
+#main .container .land_item2 .wjma a:hover { text-decoration: underline; }
+
+#main .container .login-btn { height: 37px; margin-top: 10px; }
+
+#main .container .login-btn .btn-img { width: 351px; height: 37px; background: url(img/welland.gif) 0 -117px no-repeat; border: none; cursor: pointer; }
+
+#main .container .land_item3 { width: 219px; height: 57px; }
+
+#main .container .land_item3 a { display: block; width: 142px; height: 32px; background: url(img/welland.gif) 0 -155px no-repeat; line-height: 32px; text-align: center; color: #ff6000; margin-top: 10px; }
+
+#main .container .land_item3 a:hover { text-decoration: underline; }
+
+#main .container .land_item3 span { display: block; font: 14px '微软雅黑'; color: #555555; }
+
+#main .container .mg42 { margin-top: 42px; }
+
+#main .container .logintips { background-color: #fff3f3; border: 1px solid #ffadb0; color: #eb0007; width: 341px; height: 20px; line-height: 20px; padding-left: 9px; position: absolute; left: 0; top: 36px; display: none; }

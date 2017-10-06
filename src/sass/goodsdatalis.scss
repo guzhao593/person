@@ -16,11 +16,6 @@
 .sh-goods-key {
     margin-bottom: 30px;
 }
-
-/**
-* 商品主图
-*/
-
 .sh-goods-gallery {
     position: relative;
     float: left;
@@ -40,6 +35,9 @@
             cursor: pointer;
             margin: 0px;
             display: block;
+            width: 398px;
+            height: 398px;
+            overflow: hidden;
             .jqZoomPup {
                 z-index: 10;
                 visibility: hidden;
@@ -50,17 +48,14 @@
                 height: 20px;
                 border: 1px solid #aaa;
                 background: #ffffff;
-                -webkit-opacity: 0.5;
-                -moz-opacity: 0.5;
-                -khtml-opacity: 0.5;
-                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-                filter: "alpha(opacity=50)";
-                /* IE 8 */
-                filter: alpha(opacity=50);
-                /* IE 4-7 */
                 opacity: .5;
                 zoom: 1;
+            }
+            img{
+                display: block;
+                width: 398px;
+                height: 398px;
+                overflow: hidden;
             }
         }
         .zoomdiv {
@@ -105,206 +100,137 @@
                 }
         }
     }
-}
-.sh-goods-gallery .preview span.jqzoom,
-.sh-goods-gallery .preview span.jqzoom img {
-    display: block;
-    width: 398px;
-    height: 398px;
-    overflow: hidden;
-}
+    .jqzoom-scroll {
+        margin: 0 auto;
+        width: 390px;
+        .prev {
+            float: left;
+            margin-left: 5px;
+            margin-right: 10px;margin-top: 22px;
+            display: block;
+            width: 10px;
+            height: 15px;
+            cursor: pointer;
+            background: url(img/datalis_icons.png) no-repeat -20px -11px;
+            &:hover {
+                background: url(img/datalis_icons.png) no-repeat -40px -11px;
 
-.sh-goods-gallery .sale-out {
-    position: absolute;
-    width: 90px;
-    height: 90px;
-    top: 160px;
-    right: 140px;
-    /*z-index: 9999;*/
-}
-
-.sh-goods-gallery .sale-out.out {
-    background: url("img/datalis_icons.png") no-repeat;
-    background-position: -94px -39px;
-}
-
-.sh-goods-gallery .sale-out.nosale {
-    background: url("img/datalis_icons.png") no-repeat;
-    background-position: 1px -39px;
-}
-
-.jqzoom-scroll {
-    margin: 0 auto;
-    width: 390px;
-}
-
-.jqzoom-scroll .prev {
-    float: left;
-    margin-left: 5px;
-    margin-right: 10px;
-    background: url(img/datalis_icons.png) no-repeat -20px -11px;
-}
-
-.jqzoom-scroll .prev.disabled,
-.jqzoom-scroll .prev:hover.disabled {
-    background: url(img/datalis_icons.png) no-repeat 0 -11px;
-}
-
-.jqzoom-scroll .prev:hover {
-    background: url(img/datalis_icons.png) no-repeat -40px -11px;
-
-}
-
-.jqzoom-scroll .next {
-    float: right;
-    background: url(img/datalis_icons.png) no-repeat -110px -11px;
-    margin-right: 5px;
-}
-
-.jqzoom-scroll .next.disabled,
-.jqzoom-scroll .next:hover.disabled {
-    background: url(img/datalis_icons.png) no-repeat -90px -11px;
-}
-
-.jqzoom-scroll .next:hover {
-    background: url(img/datalis_icons.png) no-repeat -130px -11px;
-}
-
-.jqzoom-scroll .prev,
-.jqzoom-scroll .next {
-    margin-top: 22px;
-    display: block;
-    width: 10px;
-    height: 15px;
-    cursor: pointer;
-}
-
-.jqzoom-scroll .items {
-    float: left;
-    position: relative;
-    width: 350px;
-    height: 60px;
-    overflow: hidden;
-}
-
-.jqzoom-scroll .items ul {
-    position: absolute;
-    width: 999999px;
-    height: 60px;
-}
-
-.jqzoom-scroll .items ul li {
-    border: 1px solid #ededed;
-    float: left;
-    width: 58px;
-    height: 58px;
-    position: relative;
-    text-align: center;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.jqzoom-scroll .items ul li i {
-    display: block;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 38px;
-    height: 38px;
-    background-position: -196px -89px;
-}
-
-.jqzoom-scroll .items ul li img {
-    width: 58px;
-    height: 58px;
-}
-
-.jqzoom-scroll .items ul li:hover i {
-    background-position: -196px -45px;
-}
-
-.jqzoom-scroll .items ul li:hover,
-.jqzoom-scroll .items ul li.active {
-    border: 1px solid #f70800;
+            }
+        }
+        .next {
+            float: right;margin-top: 22px;
+            display: block;
+            width: 10px;
+            height: 15px;
+            cursor: pointer;
+            background: url(img/datalis_icons.png) no-repeat -110px -11px;
+            margin-right: 5px;
+            &:hover {
+                background: url(img/datalis_icons.png) no-repeat -130px -11px;
+            }
+        }
+        .items {
+            float: left;
+            position: relative;
+            width: 350px;
+            height: 60px;
+            overflow: hidden;
+            ul {
+                position: absolute;
+                width: 999999px;
+                height: 60px;
+                li {
+                    border: 1px solid #ededed;
+                    float: left;
+                    width: 58px;
+                    height: 58px;
+                    position: relative;
+                    text-align: center;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    img {
+                        width: 58px;
+                        height: 58px;
+                    }
+                    &:hover{
+                        border: 1px solid #f70800;
+                    }
+                }
+                li.active {
+                    border: 1px solid #f70800;
+                }
+            }
+        }
+    }
 }
 
 .sh-goods-share {
     margin-top: 20px;
+    .no {
+        float: left;
+        color: #adadad;
+    }
+    .baidu-share {
+        float: right;
+        .share {
+            float: left;
+            .bds_more{ 
+                width:24px;
+                &:hover{ text-decoration:underline;}
+            }
+            span {
+                padding-top: 0 !important;
+                height: auto !important;
+                padding-bottom: 0 !important;
+                float: none !important;
+                font-family: "Microsoft YaHei" !important;
+                font-size: 12px !important;
+                color: #222;
+                background-image: none !important;
+                position: relative;
+                i {
+                    display: block;
+                    position: absolute;
+                    top: 1px;
+                    right:30px;
+                    width: 13px;
+                    height: 13px;
+                    background-position: -72px -289px;
+                    background: url(img/datalis_icons.png) no-repeat -72px -289px;
+                }
+            }
+        }
+        .concerns {
+            float: left;
+            position: relative;
+            color: #222;
+            display: block;
+            padding-left: 18px;
+            margin-left: 10px;
+            cursor: pointer;
+            span.concerns-text {
+                position: relative;
+                span:hover{
+                    text-decoration: underline;
+                }
+                span {
+                    display: inline-block;
+                    margin-left: 10px;
+                    width: 50px;
+                    i {
+                        display: block;
+                        position: absolute;
+                        top: 3px;
+                        left: -10px;
+                        width: 13px;
+                        height: 11px;
+                        background: url(img/datalis_icons.png) no-repeat -72px -270px;
+                    }
+                }
+            }
+        }
+    }
 }
-
-.sh-goods-share .no {
-    float: left;
-    color: #adadad;
-}
-
-.sh-goods-share .baidu-share {
-    float: right;
-}
-
-.sh-goods-share .baidu-share .share {
-    float: left;
-}
-.sh-goods-share .baidu-share .share .bds_more{ width:24px;}
-.sh-goods-share .baidu-share .share .bds_more:hover{ text-decoration:underline;}
-.sh-goods-share .share span {
-    padding-top: 0 !important;
-    height: auto !important;
-    padding-bottom: 0 !important;
-    float: none !important;
-    font-family: "Microsoft YaHei" !important;
-    font-size: 12px !important;
-    color: #222;
-    background-image: none !important;
-    position: relative;
-}
-
-.sh-goods-share .share span i {
-    display: block;
-    position: absolute;
-    top: 1px;
-    right:30px;
-    width: 13px;
-    height: 13px;
-    background-position: -72px -289px;
-    background: url(img/datalis_icons.png) no-repeat -72px -289px;
-}
-
-.sh-goods-share .concerns {
-    float: left;
-    position: relative;
-    color: #222;
-    display: block;
-    padding-left: 18px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.sh-goods-share .concerns span.concerns-text {
-    position: relative;
-}
-.sh-goods-share .concerns span.concerns-text span:hover{
-    text-decoration: underline;
-}
-.sh-goods-share .concerns span.concerns-text span {
-    display: inline-block;
-    margin-left: 10px;
-    width: 50px;
-}
-
-.sh-goods-share .concerns span.concerns-text i {
-    display: block;
-    position: absolute;
-    top: 3px;
-    left: -10px;
-    width: 13px;
-    height: 11px;
-    background: url(img/datalis_icons.png) no-repeat -72px -270px;
-}
-
-.sh-goods-share .concerns span.concerns-text.already i {
-    background: url(img/datalis_icons.png) no-repeat -100px -270px;
-}
-
 /**
 *商品参数
 */
@@ -313,334 +239,184 @@
     float: right;
     position: relative;
     width: 570px;
-    z-index: 99
+    z-index: 99;
+    .brand {
+        padding-left: 10px;
+        margin-bottom: 5px;
+        span {
+            display: block;
+            height: 27px;
+            line-height: 27px;
+            color: #666;
+            float: left;
+            a {
+                color: #666;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .title {
+        margin-bottom: 10px;
+        width: 420px;
+        color: #222;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .description {
+        margin-bottom: 10px;
+        color: #666;
+        
+    }
 }
-
-.sh-goods-parameters .sale-mode {
-    position: absolute;
-    width: 49px;
-    height: 54px;
-    top: -10px;
-    right: 0;
-}
-
-.sh-goods-parameters .sale-mode.bs {
-    background-position: -168px -216px;
-}
-
-.sh-goods-parameters .sale-mode.zg {
-    background-position: -168px -290px;
-}
-
-.sh-goods-parameters .brand {
-    padding-left: 10px;
-    margin-bottom: 5px;
-}
-
-.sh-goods-parameters .brand span {
-    display: block;
-    height: 27px;
-    line-height: 27px;
-    color: #666;
-}
-
-.sh-goods-parameters .brand.no-country span {
-    height: auto;
-    line-height: 10px;
-}
-
-.sh-goods-parameters .brand span a {
-    color: #666;
-}
-
-.sh-goods-parameters .brand span a:hover {
-    text-decoration: underline;
-}
-
-.sh-goods-parameters .brand span.country-flag,
-.sh-goods-parameters .brand span.country-brand {
-    float: left;
-}
-
-.sh-goods-parameters .brand span.country-flag span {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.sh-goods-parameters .brand span.country-flag span.split {
-    margin: 0 5px;
-}
-
-.sh-goods-parameters .brand span.country-flag img {
-    display: inline-block;
-    margin-right: 7px;
-    width: 28px;
-    height: 19px;
-    overflow: hidden;
-    margin-top:4px;
-}
-
-.sh-goods-parameters .title {
-    margin-bottom: 10px;
-    width: 420px;
-    color: #222;
-    font-size: 18px;
-    line-height: 22px;
-}
-
-.sh-goods-parameters .description {
-    margin-bottom: 10px;
-    color: #666;
-    
-}
-
 .sh-goods-parameters .price-box {
     position: relative;
     padding: 15px 10px 10px 10px;
     margin-bottom: 15px;
     border: 1px dotted #e8e8e8;
     background-color: #fafafa;
+    li {
+        margin: 0;
+        padding: 0;
+        color: #666;
+        span{
+            display: inline-block;
+        }
+    }
+    li.mb {
+        margin-bottom: 5px;
+        span.label.price-label {
+            margin-top: 15px;
+            vertical-align: top;
+            width: 40px;
+        }
+        span.price {
+            color: #f70800;
+            font-size: 34px;
+            margin-right: 7px;
+            i {
+                font-size: 24px;
+                vertical-align: top;
+                margin-top: 8px;
+                display: inline-block;
+            }
+        }
+    }
 }
-
-.sh-goods-parameters .price-box ul li {
-    margin: 0;
-    padding: 0;
-    color: #666;
-}
-
-.sh-goods-parameters .price-box ul li.mb {
-    margin-bottom: 5px;
-}
-
-.sh-goods-parameters .price-box ul li span,
-.sh-goods-parameters .price-box ul li div {
-    display: inline-block;
-}
-
-.sh-goods-parameters .price-box ul li div {
-    *display: inline;
-}
-
-.sh-goods-parameters .price-box ul li div p {
-    margin: 0 0 5px 0;
-    padding: 0;
-}
-
-.sh-goods-parameters .price-box ul li div p span.tag {
-    padding: 1px 8px;
-    margin-right: 5px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    background-color: #ff504a;
-    color: #fff;
-    text-align: center;
-}
-
-.sh-goods-parameters .price-box ul li div p span {
-    max-width: 350px;
-    vertical-align: text-top;
-}
-
-.sh-goods-parameters .price-box ul li span.label {
-    width: 40px;
-    vertical-align: top;
-}
-
-.sh-goods-parameters .price-box ul li span.label.price-label {
-    margin-top: 15px;
-}
-
-.sh-goods-parameters .price-box ul li span.price {
-    color: #f70800;
-    font-size: 34px;
-    margin-right: 7px;
-}
-
-.sh-goods-parameters .price-box ul li span.price i {
-    font-size: 24px;
-    vertical-align: top;
-    margin-top: 8px;
-    display: inline-block;
-}
-
-.sh-goods-parameters .price-box ul li span.original {
-    color: #666;
-    text-decoration: line-through;
-    margin-right: 7px;
-}
-
-.sh-goods-parameters .price-box ul li span.discount {
-    margin-top: 15px;
-    padding: 0px 5px;
-    line-height: 20px;
-    color: #FF504A;
-    border: 1px dotted #FF504A;
-    font-size: 14px;
-    vertical-align: top;
-}
-
-.sh-goods-parameters .price-box .taxation {
-    position: absolute;
-    padding-right: 18px;
-    top: 30px;
-    right: 10px;
-    color: #666;
-    cursor: pointer;
-    display: block;
-    vertical-align: top;
-}
-.sh-goods-parameters .price-box .taxation span.taxation-text {
-    position: relative;
-}
-
-.sh-goods-parameters .price-box .taxation span.taxation-text span {
-    display: inline-block;
-    width: 30px;
-}
-
-.sh-goods-parameters .price-box .taxation span.taxation-text i {
-    position: absolute;
-    display: block;
-    background-position: -100px -310px;
-    width: 14px;
-    height: 14px;
-    top: 2px;
-    left: 30px;
-}
-
 .sh-goods-parameters .choice-buy {
     margin-bottom: 30px;
-}
-
-.sh-goods-parameters .choice-buy dl {
-    padding: 0 10px;
-    margin-bottom: 15px;
-}
-
-.sh-goods-parameters .choice-buy dl dt {
-    float: left;
-    width: 40px;
-}
-
-.sh-goods-parameters .choice-buy dl dd {
-    float: left;
-    width: 420px;
-}
-
-.sh-goods-parameters .choice-buy dl dd span {
-    position: relative;
-    float: left;
-    margin-right: 8px;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.sh-goods-parameters .choice-buy dl.sendto dt {
-    margin-top: 5px;
-}
-
-.sh-goods-parameters .choice-buy dl.color {
-    margin-bottom: 7px;
-    *margin-bottom: 15px;
-}
-
-.sh-goods-parameters .choice-buy dl.color dt {
-    margin-top: 10px;
-}
-
-.sh-goods-parameters .choice-buy dl.color dd span {
-    margin-bottom: 8px;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    text-align: center;
-    padding: 1px;
-    border: 1px solid #ccc;
-}
-
-.sh-goods-parameters .choice-buy dl.color dd span.err-info {
-    clear: both;
-    border: none;
-    padding: 0 0 0 20px;
-    *padding: 0 0 10px 20px;
-    margin-top: 0;
-    margin-bottom: 10px;
-    width: auto;
-    height: auto;
-    line-height: normal;
-    background-color: transparent;
-    cursor: default;
-}
-
-.sh-goods-parameters .choice-buy dl.color dd span.err-info i {
-    top: 0;
-    left: 0;
-}
-
-.sh-goods-parameters .choice-buy dl.color dd span.select {
-    border-width: 2px;
-    padding: 0;
-}
-.sh-goods-parameters .choice-buy dl.color dd span:not(.err-info):hover:not(.nogoods) {
-    border-width: 2px;
-    padding: 0;
-    border-color:#ff504a;
-}
-.sh-goods-parameters .choice-buy dl dd span i {
-    display: none;
-    width: 0;
-    height:0;
-    overflow: hidden;
-}
-
-.sh-goods-parameters .choice-buy dl dd span.select i {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    display: block;
-    width: 12px;
-    height: 12px;
-    background: url("img/datalis_icons.png") no-repeat;
-    background-position: -72px -336px;
-}
-
-.sh-goods-parameters .choice-buy dl.color dd span img {
-    display: block;
-    width: 36px;
-    height: 36px;
-    overflow: hidden;
+    dl {
+        padding: 0 10px;
+        margin-bottom: 15px;
+        dt {
+            float: left;
+            width: 40px;
+        }
+        dd {
+            float: left;
+            width: 420px;
+            span {
+                position: relative;
+                float: left;
+                margin-right: 8px;
+                background-color: #fff;
+                cursor: pointer;
+            }
+            span.select i {
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                display: block;
+                width: 12px;
+                height: 12px;
+                background: url("img/datalis_icons.png") no-repeat;
+                background-position: -72px -336px;
+            }
+        }
+    }
+    dl.sendto dt {
+        margin-top: 5px;
+    }
+    dl.color {
+        margin-bottom: 7px;
+        dt {
+            margin-top: 10px;
+            span {
+                margin-bottom: 8px;
+                width: 36px;
+                height: 36px;
+                line-height: 36px;
+                text-align: center;
+                padding: 1px;
+                border: 1px solid #ccc;
+                i {
+                    display: none;
+                    width: 0;
+                    height:0;
+                    overflow: hidden;
+                }
+                img {
+                    display: block;
+                    width: 36px;
+                    height: 36px;
+                    overflow: hidden;
+                }
+            }
+            span.err-info {
+                clear: both;
+                border: none;
+                padding: 0 0 0 20px;
+                *padding: 0 0 10px 20px;
+                margin-top: 0;
+                margin-bottom: 10px;
+                width: auto;
+                height: auto;
+                line-height: normal;
+                background-color: transparent;
+                cursor: default;
+                i {
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+        dd span.select {
+            border-width: 2px;
+            padding: 0;
+        }
+        dd span:not(.err-info):hover:not(.nogoods) {
+            border-width: 2px;
+            padding: 0;
+            border-color:#ff504a;
+        }
+    }
 }
 
 .sh-goods-parameters .choice-buy dl.size {
     margin-bottom: 7px;
-    *margin-bottom: 15px;
-}
-
-.sh-goods-parameters .choice-buy dl.size dt {
-    margin-top: 5px;
-}
-
-.sh-goods-parameters .choice-buy dl.size dd span {
-    margin-bottom: 8px;
-    min-width: 10px;
-    padding: 5px 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-}
-
-.sh-goods-parameters .choice-buy dl.size dd span.err-info {
-    clear: both;
-    border: none;
-    padding: 0 0 0 20px;
-    *padding: 0 0 6px 20px;
-    margin-top: -6px;
-    margin-bottom: 6px;
-    background-color: transparent;
-    cursor: default;
-}
-
-.sh-goods-parameters .choice-buy dl.size dd span.err-info i {
-    left: 0;
+    dt {
+        margin-top: 5px;
+    }
+    dd span {
+        margin-bottom: 8px;
+        min-width: 10px;
+        padding: 5px 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+    dd span.err-info {
+        clear: both;
+        border: none;
+        padding: 0 0 0 20px;
+        margin-top: -6px;
+        margin-bottom: 6px;
+        background-color: transparent;
+        cursor: default;
+        i {
+            left: 0;
+        }
+    }
 }
 
 .sh-goods-parameters .choice-buy dl.size dd span.select {
@@ -729,14 +505,17 @@
 .sh-goods-parameters .add-cart {
     position: relative;
     padding-left: 10px;
+    span {
+        display: block;
+        margin-top: 10px;
+        color: #666;
+    }
+    .merchant_zg{
+        padding-left: 30px; background: url(img/datalis_icon_1.png) no-repeat; background-position: 0 7px; color: #777;
+        span{color: #222; display: inline-block;}
+        span.mz_zg{color: #ff504a;}
+    }
 }
-
-.sh-goods-parameters .add-cart span {
-    display: block;
-    margin-top: 10px;
-    color: #666;
-}
-
 .sh-goods-parameters .err-info {
     position: relative;
     display: block;
@@ -1505,7 +1284,7 @@ dl dd span.err-info{
     display: block;
     width: 57px;
     height: 11px;
-    *margin-top: 3px;
+    background: url(img/datalis_icons.png) no-repeat;
 }
 
 .sh-goods-details .group .related .comment .comment-box .comment-box-list ul.comment-list li .author i.comment-star-0 {
@@ -1531,6 +1310,54 @@ dl dd span.err-info{
 .sh-goods-details .group .related .comment .comment-box .comment-box-list ul.comment-list li .author i.comment-star-5 {
     background-position: 0 -304px;
 }
+.sh-goods-details .group .related .comment{
+    .comment-out{
+        margin-top:20px;
+        .comment-out-star{
+            .comment-star-title{
+                float:left;line-height:30px;width:100px;text-indent:21px;
+            }
+            .comment-star-box{
+                float:left;height:30px;padding-top:6px;box-sizing:border-box;
+                .star{
+                    display:block;width:16px;height:16px;float:left;
+                    background:url('img/commstar.png') no-repeat 0 0;
+                }
+                .star-hover{
+                    background-position:0 -16px;
+                }
+                .star-active{
+                    background-position:0 -16px;
+                }
+            }
+        }
+        .comment-out-evaluation{
+            margin-top:10px;
+            .comment-evaluation-title{float:left;width:100px;text-indent:21px;}
+            .comment-evaluation-box{
+                float:left;
+                textarea{
+                    width:628px;height:100px;
+                }
+            }
+        }
+        .comment-out-submit{
+            margin-top:10px;
+            position:relative;
+            button{
+                width:100px;height:30px;line-height:30px;text-align:center;background-color:#f00;font-size:12px;margin-left:100px;outline:none;border:0 none;color:#fff;border-radius:3px;cursor:pointer;
+                &:hover{
+                    background-color:$mainColor;
+                }
+            }
+            .etips{
+                width:85px;height:28px;line-height:28px;padding-left:10px;border:1px solid #ffadb0;color: #eb0007;position:absolute;left:215px;top:0px;display:none;
+            }
+        }
+    }
+}
+
+
 
 .sh-goods-details .group .related .comment .comment-page {
     float: right;
@@ -1717,12 +1544,6 @@ dl dd span.err-info{
     height: 0
 }
 
-/**
- * radio,checkbox
- * 
- * 
- */
-
 .custom-checkbox,
 .custom-radio {
     position: relative;
@@ -1733,8 +1554,6 @@ dl dd span.err-info{
     display: block;
     cursor: pointer;
 }
-
-/* input, label positioning */
 
 .custom-checkbox input {
     position: absolute;
@@ -1926,7 +1745,6 @@ dl dd span.err-info{
 }
 
 .xdljfa {
-    /* position:absolute; left:70px; top:0;*/
     float: left;
     font-family: "微软雅黑", "黑体";
     color: #666666;
@@ -2093,38 +1911,6 @@ dl dd span.err-info{
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
-
-/*标签wxl*/
-.bqtv {
-    background: rgba(0, 0, 0, 0) url("../../images/2013_v1/tvpic/newbq.png") repeat scroll 0 -55px;
-    height: 58px;
-    left: 10px;
-    position: absolute;
-    top: 10px;
-    width: 58px;
-    z-index: 99;
-}/*tv标签*/
-.zj1{position:absolute; width:62px; height:62px; background:url(../../images/2013_v1/tvpic/newbq.png) no-repeat 0 -323px;top:10px; right:10px; font-size:17px;  padding-top:28px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#fff; text-align:center; z-index:99;}/*直降标签*/
-.zj1 span{text-align:center;}
-.zjnew{position:absolute; width:52px; height:52px; background:url(../../images/2013_v1/tvpic/newbq.png) no-repeat 0 -260px; top:10px; right:10px; z-index:99;}/*新品标签*/
-.zjhot{position:absolute; width:52px; height:52px; background:url(../../images/2013_v1/tvpic/newbq.png) no-repeat 0 -192px; top:10px; right:10px; z-index:99;}/*hot标签*/
-.jzbq{position:absolute; width:62px; height:62px; background:url(../../images/2013_v1/tvpic/newbq.png) no-repeat 0 -119px; top:10px; right:10px; z-index:99;}/*限时加赠标签*/
-.hdlog{ position:absolute; width:80px; height:80px; top:10px; right:10px; overflow:hidden; z-index:99;}/*活动logo标签*/
-.hdlog img{ width:80px; height:80px;}
-/*N元任选*/
-.n_title{
-    color: #f70800;
-}
-.n_space{
-    margin: 0 5px;
-}
-.n_link{
-    margin-left: 30px;
-    color: #2766e3;
-}
-.n_link:hover{
-    text-decoration: underline;
-}
 .sh-goods-parameters .price-box ul li span.n_choose {
     margin-top: 15px;
     padding: 0px 5px;
@@ -2160,14 +1946,3 @@ dl dd span.err-info{
 .parabola{
     width: 40px; height: 40px; position: absolute; top: -40px; left: 75px; z-index: 1222; border-radius: 10px;display:block;
 }
-/* 五星会员价 s */
-.five_star,.five_star_num{color: #ff504a;}
-.price-box .mb .five_star{font-size: 14px; line-height: 14px; margin-top: -3px;}
-.watching li .price .five_star{font-size: 12px; margin-left: -8px;}
-/* 五星会员价 e */
-
-/* 2017-8-8 详情页添加供货商信息 */
-.merchant_zg{padding-left: 30px; background: url(img/datalis_icon_1.png) no-repeat; background-position: 0 7px; color: #777;}.sh-goods-parameters .add-cart .merchant_zg span{color: #222; display: inline-block;}
-.sh-goods-parameters .add-cart .merchant_zg span.mz_zg{color: #ff504a;}
-.ugo_gw_zg{padding:10px 0 5px 30px; background: url(../../images/2016/2016_goods/icon_2.png) no-repeat; background-position: 0 7px; color: #222;}
-.tv_shop_zg{padding:10px 0 5px 30px; background: url(../../images/2016/2016_goods/icon_3.png) no-repeat; background-position: 0 6px; color: #222;}

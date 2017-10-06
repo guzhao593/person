@@ -2,11 +2,97 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:45
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-09-29 18:07:31
+* @Last Modified time: 2017-10-05 21:25:56
 */
 
 define(['jquery'],function($){
     return {
+        comment:function(){
+            var Comment = {
+                init:function(){
+                    var self = this;
+                    self.showcomment('all',1);
+                    //滑动及点击时星星的显示
+                    $('.comment-star-box').on('mouseover','span',function(){
+                        var num = $(this).attr('data-num')-1;
+                        $('.star').removeClass('star-hover');
+                        $('.star').each(function(idx){
+                            if(idx>num){
+                                return;
+                            }
+                            $(this).addClass('star-hover');
+                        });
+                        $(this).click(function(){
+                            $('.star').removeClass('star-active');
+                            $('.star').each(function(idx){
+                                if(idx>num){
+                                    return;
+                                }
+                                $(this).addClass('star-active');
+                            });
+                        });
+                    }).on('mouseout','span',function(){
+                        $('.star').removeClass('star-hover');
+                    });
+                    //提交评论
+                    $('.comment-submit').click(function(){
+                        if($('textarea').val().trim() == ''){
+                            $('.etips').css('display','block').text('评论不能为空');
+                            return;
+                        }
+                        $('.etips').css('display','none');
+                        var commentUserName = '';
+                        var commentContent = $('textarea').val().trim();
+                        var commentStar = $('.star-active').length;
+                        if($('.username').length>0){
+                            commentUserName = $('.username a').text();
+                        }else{
+                            commentUserName = '游客'+Date.now();
+                        }
+                        $.get('../api/comment.php?commentUserName='+commentUserName+'&commentContent='+commentContent+'&commentStar='+commentStar,function(data,status){
+                            if(status == 'success'){
+                                if(data){
+                                    $('.etips').css('display','block').text('评价提交成功').fadeOut(3000);
+                                    $('.star').removeClass('star-active');
+                                    $('textarea').val('');
+                                    self.showcomment('all',1);
+                                }
+                            }
+                        });
+                    });
+                    return this;
+                },
+                showcomment:function(good,page){
+                    $.get('../api/comment.php?comment='+good+'&page='+page,function(data,status){
+                        if(status == 'success'){
+                            var commentData = data.split('&');
+                            var commentTotal =JSON.parse(commentData[0])[0][0];
+                            var commentShow = JSON.parse(commentData[1]);
+                            $('.comment-list').html(commentShow.map(function(item){
+                                return `<li class="clearfix">
+                                                <div class="descrption">
+                                                    <p class="text">
+                                                        ${item.content}
+                                                    </p>
+                                                    <p class="datetime">${item.time}</p>
+                                                </div>
+                                                <div class="attr">
+                                                    <p>&nbsp;</p>
+                                                    <p>&nbsp;</p>
+                                                </div>
+                                                <div class="author">
+                                                    <span>${item.username}</span>
+                                                    <i class="comment-star comment-star-${item.star}"></i>
+                                                </div>
+                                            </li>`;
+                            }).join(''));
+                        }
+                    });
+                    return this;
+                }
+            }
+            return Comment.init();
+        },
         slider:function(){
             var Slider = {
                 init:function(){

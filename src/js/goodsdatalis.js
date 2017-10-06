@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-26 09:17:02
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-09-29 18:06:57
+* @Last Modified time: 2017-10-05 16:26:48
 */
 
 require(['config'],function(){
@@ -17,6 +17,8 @@ require(['config'],function(){
             com.slider().init();
             com.showlogin();
         });
+        //评论
+        com.comment();
         var id = location.search.slice(1);
         var idNum = Number(id.slice(3));
         var viewData = [];
