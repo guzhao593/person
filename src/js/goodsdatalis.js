@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-26 09:17:02
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-05 16:26:48
+* @Last Modified time: 2017-10-06 15:13:52
 */
 
 require(['config'],function(){
@@ -19,6 +19,7 @@ require(['config'],function(){
         });
         //评论
         com.comment();
+
         var id = location.search.slice(1);
         var idNum = Number(id.slice(3));
         var viewData = [];
@@ -190,7 +191,8 @@ require(['config'],function(){
                     }));
                     //点击加减按纽
                     com.btnNum($('#goodsNumber .box'));
-                    
+                    //吸顶菜单
+                    com.suctiontopmenu(goodsData);
                 }
         });
     })

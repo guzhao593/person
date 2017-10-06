@@ -156,11 +156,11 @@
                         <div class="related">
                             <div class="tab clearfix">
                                 <div class="tab-select">
-                                    <a class="active" href="#details"  data-scorll="details">商品详情</a>
-                                    <a href="#comments"  data-scorll="comments">评论 
+                                    <a class="active" href=""  data-scroll="details">商品详情</a>
+                                    <a href=""  data-scroll="comments">评论 
                                         <span id="flcomments">()</span>
                                     </a>
-                                    <a href="#services"  data-scorll="services">服务说明</a>
+                                    <a href=""  data-scroll="services">服务说明</a>
                                 </div>
                                 <div class="ext">
                                     <div class="options">
@@ -168,7 +168,7 @@
                                         <span id="ext_size"></span>
                                     </div>
                                     <div class="ext-cart-info">
-                                        <span  id="ext_num"></span>
+                                        <span  id="ext_num">1件</span>
                                         <span class="price"  id="ext_price" ></span>
                                         <button class="sh-shopping-cart">
                                             <i></i>加入购物车
@@ -216,21 +216,21 @@
                                                     <input type="radio" checked="checked" name="comment" value="all" id="all" />
                                                     <label for="all" class="checked">
                                                         <i></i>
-                                                        <span id="allifno">全部评论()</span>
+                                                        <span id="allifno">全部评论(0)</span>
                                                     </label>
                                                 </li>
                                                 <li>
                                                     <input type="radio" name="comment" value="good" id="good" />
                                                     <label for="good">
                                                         <i></i>
-                                                        <span id="goodifno">好评()</span>
+                                                        <span id="goodifno">好评(0)</span>
                                                     </label>
                                                 </li>
                                                 <li>
                                                     <input type="radio" name="comment" value="middle" id="middle" />
                                                     <label for="middle">
                                                         <i></i>
-                                                        <span id="middleifno">中评(5)</span>
+                                                        <span id="middleifno">中评(0)</span>
                                                     </label>
                                                 </li>
                                                 <li>
@@ -242,7 +242,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="show-pic">
+                                        <div class="show-pic" style="display:none">
                                             <input type="checkbox" id="is-show-pic" value="show_pic" name="is-show-pic" />
                                             <label for="is-show-pic">
                                                 <i></i>
@@ -252,74 +252,26 @@
                                     </div>
                                     <div class="comment-box-list">
                                         <ul class="comment-list" id="goods_comment">
-                                            <li class="clearfix">
-                                                <div class="descrption">
-                                                    <p class="text">
-                                                        商品己经收到了，谢谢快递师傅，节日正好和家人一起品尝。
-                                                    </p>
-                                                    <p class="datetime">2017-10-04 14:41:20</p>
-                                                </div>
-                                                <div class="attr">
-                                                    <p>&nbsp;</p>
-                                                    <p>&nbsp;</p>
-                                                </div>
-                                                <div class="author">
-                                                    <span>156****3029</span>
-                                                    <i class="comment-star comment-star-5"></i>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix">
-                                                <div class="descrption">
-                                                    <p class="text">
-                                                        商品己经收到了，谢谢快递师傅，节日正好和家人一起品尝。
-                                                    </p>
-                                                    <p class="datetime">2017-10-04 14:41:20</p>
-                                                </div>
-                                                <div class="attr">
-                                                    <p>&nbsp;</p>
-                                                    <p>&nbsp;</p>
-                                                </div>
-                                                <div class="author">
-                                                    <span>156****3029</span>
-                                                    <i class="comment-star comment-star-5"></i>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix">
-                                                <div class="descrption">
-                                                    <p class="text">
-                                                        商品己经收到了，谢谢快递师傅，节日正好和家人一起品尝。
-                                                    </p>
-                                                    <p class="datetime">2017-10-04 14:41:20</p>
-                                                </div>
-                                                <div class="attr">
-                                                    <p>&nbsp;</p>
-                                                    <p>&nbsp;</p>
-                                                </div>
-                                                <div class="author">
-                                                    <span>156****3029</span>
-                                                    <i class="comment-star comment-star-5"></i>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix">
-                                                <div class="descrption">
-                                                    <p class="text">
-                                                        商品己经收到了，谢谢快递师傅，节日正好和家人一起品尝。
-                                                    </p>
-                                                    <p class="datetime">2017-10-04 14:41:20</p>
-                                                </div>
-                                                <div class="attr">
-                                                    <p>&nbsp;</p>
-                                                    <p>&nbsp;</p>
-                                                </div>
-                                                <div class="author">
-                                                    <span>156****3029</span>
-                                                    <i class="comment-star comment-star-5"></i>
-                                                </div>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="comment-page">
+                                    <div class="pageturn">
+                                        <div class="pagebox clearfix">
+                                            <a class="first">首页</a>
+                                            <a class='prevpage'></a>
+                                            <ul class="clearfix">
+                                                <li>1</li>
+                                                <li style="display:none">2</li>
+                                                <li style="display:none">3</li>
+                                                <li style="display:none">4</li>
+                                                <li style="display:none">5</li>
+                                                <li style="display:none">6</li>
+                                            </ul>
+                                            <a class="nextpage"></a>
+                                            <a class="last">末页</a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="comment-out">
                                     <div class="comment-out-star clearfix">
@@ -347,9 +299,9 @@
                             <div class="service" id="services">
                                 <h3 class="title"></h3>
                                 <div class="service-box sh-goods-block">
-                                        <img class="lazy-loading" src="">
-                                        <img class="lazy-loading" src="" >
-                                        <img class="lazy-loading" src="">
+                                        <img class="lazy-loading" src="img/service-pay.jpg">
+                                        <img class="lazy-loading" src="img/service-ps.jpg" >
+                                        <img class="lazy-loading" src="img/service-tui.jpg">
                                 </div>
                                 <div class="seo sh-goods-block">
                                 </div>

@@ -444,7 +444,7 @@ dl dd span.err-info { display: none; }
 
 .sh-goods-details .group .related .comment .comment-box .comment-box-list ul.comment-list li .author i.comment-star-5 { background-position: 0 -304px; }
 
-.sh-goods-details .group .related .comment .comment-out { margin-top: 20px; }
+.sh-goods-details .group .related .comment .comment-out { margin-top: 50px; }
 
 .sh-goods-details .group .related .comment .comment-out .comment-out-star .comment-star-title { float: left; line-height: 30px; width: 100px; text-indent: 21px; }
 
@@ -472,21 +472,33 @@ dl dd span.err-info { display: none; }
 
 .sh-goods-details .group .related .comment .comment-out .comment-out-submit .etips { width: 85px; height: 28px; line-height: 28px; padding-left: 10px; border: 1px solid #ffadb0; color: #eb0007; position: absolute; left: 215px; top: 0px; display: none; }
 
-.sh-goods-details .group .related .comment .comment-page { float: right; margin-top: 10px; margin-right: -8px; }
+.sh-goods-details .group .related .comment .comment-page { float: right; margin-top: 10px; margin-right: 1px; }
 
-.sh-goods-details .group .related .comment .comment-page span, .sh-goods-details .group .related .comment .comment-page a { float: left; margin-right: 10px; text-align: center; border: 1px solid #e8e8e8; width: 22px; height: 22px; line-height: 22px; color: #666; }
+.sh-goods-details .group .related .comment .comment-page .pageturn { height: 22px; color: #161616; }
 
-.sh-goods-details .group .related .comment .comment-page span.text, .sh-goods-details .group .related .comment .comment-page a.text { width: 80px; }
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox { float: right; }
 
-.sh-goods-details .group .related .comment .comment-page a:hover { border-color: #FF504A; }
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox a { border: 1px solid #C5C5C5; display: block; height: 20px; line-height: 20px; text-align: center; width: 58px; margin-left: 10px; background: #FFF; float: left; cursor: pointer; }
 
-.sh-goods-details .group .related .comment .comment-page a.current, .sh-goods-details .group .related .comment .comment-page a:active { background-color: #FF504A; border-color: #FF504A; color: #fff; }
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox a:hover { border: 1px solid #EF0307; color: #EF0307; }
 
-.sh-goods-details .group .related .comment .comment-page span code, .sh-goods-details .group .related .comment .comment-page a code { display: inline-block; }
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox a.active { background-color: #E7E7E7; }
 
-.sh-goods-details .group .related .comment .comment-page span .code-l, .sh-goods-details .group .related .comment .comment-page a .code-l { margin-left: 5px; }
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox .nextpage { border: 0 none; margin-left: 2px; height: 22px; background: url(img/sjjt.gif) no-repeat 0 -469px; }
 
-.sh-goods-details .group .related .comment .comment-page span .code-r, .sh-goods-details .group .related .comment .comment-page a .code-r { margin-right: 5px; }
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox .nextpage:hover { border: 0 none; margin-left: 2px; background-position: 0 -406px; }
+
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox .prevpage { border: 0 none; height: 22px; background: url(img/sjjt.gif) no-repeat 0 -585px; }
+
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox .prevpage:hover { border: 0 none; background-position: 0 -376px; }
+
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox ul { float: left; margin-left: 10px; }
+
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox ul li { float: left; margin-right: 8px; border: 1px solid #C5C5C5; display: inline-block; height: 20px; line-height: 20px; text-align: center; width: 20px; background: #FFF; cursor: pointer; }
+
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox ul li:hover { border: 1px solid #EF0307; color: #EF0307; }
+
+.sh-goods-details .group .related .comment .comment-page .pageturn .pagebox ul li.active { background-color: #E7E7E7; }
 
 /** 服务说明 */
 .sh-goods-details .group .related .service .service-box img { display: block; margin-bottom: 20px; width: 730px; }

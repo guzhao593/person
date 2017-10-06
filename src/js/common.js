@@ -2,16 +2,24 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:45
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-05 21:25:56
+* @Last Modified time: 2017-10-06 16:01:06
 */
 
 define(['jquery'],function($){
     return {
+        //详情页评论
         comment:function(){
             var Comment = {
                 init:function(){
                     var self = this;
-                    self.showcomment('all',1);
+                    self.goodBad = 'all';
+                    //每页显示评论数量
+                    var showNum = 10;
+                    //当前页面数
+                    var page = 1;
+                    self.showcomment('allfirst',1,function(){
+                        self.showpage(page,showNum);
+                    });
                     //滑动及点击时星星的显示
                     $('.comment-star-box').on('mouseover','span',function(){
                         var num = $(this).attr('data-num')-1;
@@ -55,18 +63,96 @@ define(['jquery'],function($){
                                     $('.etips').css('display','block').text('评价提交成功').fadeOut(3000);
                                     $('.star').removeClass('star-active');
                                     $('textarea').val('');
-                                    self.showcomment('all',1);
+                                    page = 1;
+                                    self.goodBad ='allfirst';
+                                    self.showcomment(self.goodBad,page,function(){
+                                        self.showpage(page,showNum);
+                                    });
                                 }
                             }
                         });
                     });
+                    //评论分类
+                    $('.select-comment').on('click','input,span',function(){
+                        if($(this).is('#all') | $(this).is('.allifno')){
+                            page = 1;
+                            self.goodBad ='all';
+                            self.showcomment(self.goodBad,page,function(){
+                                self.showpage(page,showNum);
+                            });
+                            
+                        }
+                        if($(this).is('#good') | $(this).is('.goodifno')){
+                            page = 1;
+                            self.goodBad ='good';
+                            self.showcomment(self.goodBad,page,function(){
+                                self.showpage(page,showNum);
+                            });
+                        }
+                        if($(this).is('#middle') | $(this).is('.middleifno')){
+                            page = 1;
+                            self.goodBad ='middle';
+                            self.showcomment(self.goodBad,page,function(){
+                                self.showpage(page,showNum);
+                            });
+                        }
+                        if($(this).is('#bad') | $(this).is('.badifno')){
+                            page = 1;
+                            self.goodBad ='bad';
+                            self.showcomment(self.goodBad,page,function(){
+                                self.showpage(page,showNum);
+                            });
+                        }
+                    });
+                    $('.pagebox').on('click','a,li',function(){
+                        //显示的最大页数
+                        var lastPage = Math.ceil(self.commentTotal/showNum);
+                        if($(this).is('.first')){
+                            self.showcomment(self.goodBad,1);
+
+                            page = 1;
+                            self.showpage(page,showNum);
+                        }
+                        if($(this).is('.last')){
+                            self.showcomment(self.goodBad,lastPage);
+                            page =lastPage;
+                            self.showpage(page,showNum);
+                        }
+                        if($(this).is('.prevpage')){
+                            page--;
+                            if(page<1){
+                                page =1;
+                            }
+                            self.showcomment(self.goodBad,page);
+                            self.showpage(page,showNum);
+                        }
+                        if($(this).is('.nextpage')){
+                            page++;
+                            if(page>lastPage){
+                                page =lastPage;
+                            }
+                            self.showcomment(self.goodBad,page);
+                            self.showpage(page,showNum);
+                        }
+                        if($(this).is('li')){
+                            page = Number($(this).text());
+                            self.showcomment(self.goodBad,page);
+                            self.showpage(page,showNum);
+                        }
+                    });
                     return this;
                 },
-                showcomment:function(good,page){
+                showcomment:function(good,page,fn){
+                    var self = this;
                     $.get('../api/comment.php?comment='+good+'&page='+page,function(data,status){
                         if(status == 'success'){
                             var commentData = data.split('&');
-                            var commentTotal =JSON.parse(commentData[0])[0][0];
+                            self.commentTotal =JSON.parse(commentData[0])[0][0]*1;
+                            if(good == 'allfirst'){
+                                self.commentGood = JSON.parse(commentData[2])[0][0]*1;
+                                self.commentMiddle = JSON.parse(commentData[3])[0][0]*1;
+                                self.commentBad = JSON.parse(commentData[4])[0][0]*1;
+                            }
                             var commentShow = JSON.parse(commentData[1]);
                             $('.comment-list').html(commentShow.map(function(item){
                                 return `<li class="clearfix">
@@ -86,13 +172,121 @@ define(['jquery'],function($){
                                                 </div>
                                             </li>`;
                             }).join(''));
+                            $('#flcomments').text(`(${self.commentTotal})`);
+                            $('#allifno').text(`全部评论(${self.commentTotal})`);
+                            $('#goodifno').text(`好评(${self.commentGood})`);
+                            $('#middleifno').text(`中评(${self.commentMiddle})`);
+                            $('#badifno').text(`差评(${self.commentBad})`);
+                        }
+                        if(fn){
+                            fn(); 
                         }
                     });
                     return this;
+                },
+                showpage:function(page,showNum){
+                    var self = this;
+                    var pageul = $('.pagebox ul');
+                    var lastPage = Math.ceil(self.commentTotal/showNum);
+                    console.log(self.commentTotal);
+                    if(lastPage<=6){
+                        pageul.children().css('display','none');
+                        pageul.children().each(function(idx){
+                            if(idx<lastPage){
+                                $(this).css('display','block').text(idx+1);
+                            }
+                        });
+                    }else{
+                        pageul.children().css('display','block');
+                        var bigNum =pageul.children().eq(4).text()*1;
+                        var smallNum = pageul.children().eq(1).text()*1;
+                        if(page == bigNum+1 && page <= lastPage-1){
+                            if(page == lastPage-1){
+                                pageul.children().each(function(){
+                                    bigNum++;
+                                    $(this).text(bigNum-4);
+                                })
+                            }else{
+                                pageul.children().each(function(){
+                                    bigNum++;
+                                    $(this).text(bigNum-3);
+                                })
+                            }
+                        }
+                        if(page == bigNum && page < lastPage-1){
+                            pageul.children().each(function(){
+                                bigNum++;
+                                $(this).text(bigNum-4);
+                            })
+                        }
+                        if(page == smallNum && page>2){
+                            pageul.children().each(function(){
+                                smallNum++;
+                                $(this).text(smallNum-3);
+                            })  
+                        }
+                        if(page == smallNum-1 && page>1){
+                            pageul.children().each(function(){
+                                smallNum++;
+                                $(this).text(smallNum-3);
+                            })  
+                        } 
+                    }
+                    if(page == 1){
+                        $('.first').addClass('active').siblings('a').removeClass('active');
+                        if(lastPage>6){
+                            var temp = page-1; 
+                            pageul.children().each(function(){
+                                temp++;
+                                $(this).text(temp);
+                            })
+                        }
+                    }else if(page ==  lastPage){
+                        if(lastPage>6){
+                            var temp = page-6;
+                            pageul.children().each(function(){
+                                temp++;
+                                $(this).text(temp);
+                            });
+                        }
+                        $('.last').addClass('active').siblings('a').removeClass('active');
+                    }else if(page != 1 && page!=lastPage){
+                        $('.first').removeClass('active').siblings('a').removeClass('active');
+                    }
+                    pageul.children().each(function(){
+                        if($(this).text() == page){
+                            $(this).addClass('active').siblings().removeClass('active');
+                            return;
+                        }
+                    });
                 }
             }
             return Comment.init();
         },
+        //详情页吸顶菜单
+        suctiontopmenu:function(goodsData){
+            $('.tab-select a').each(function(){
+                var url = location.href+'#'+$(this).attr('data-scroll');
+                $(this).attr('href',url);
+            });
+            $('.tab-select a').click(function(){
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            $(window).scroll(function(){
+                var showTopHeight = $('.sh-goods-details').offset().top;
+                if($(window).scrollTop() >showTopHeight){
+                    $('.tab').addClass('fixed-bar');
+                    $('.ext').css('display','block');
+                    $('#ext_size').text(goodsData.spec);
+                    $('#ext_color').text(goodsData.color);
+                    $('#ext_num').text(`数量：${$('#goodsNumberInput').val()}`);
+                }else{
+                    $('.tab').removeClass('fixed-bar');
+                    $('.ext').css('display','none');
+                }
+            });
+        },
+        //固定侧边栏
         slider:function(){
             var Slider = {
                 init:function(){

@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-27 09:59:11
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-09-29 16:13:50
+* @Last Modified time: 2017-10-06 11:16:35
 */
 require(['config'],function(){
     require(['jquery','common'],function($,com){
@@ -199,8 +199,6 @@ require(['config'],function(){
                         var pageul = $('.pagebox ul');
                         var bigNum =pageul.children().eq(4).text()*1;
                         var smallNum = pageul.children().eq(1).text()*1;
-                        // console.log(bigNum);
-                        // console.log(smallNum);
                         if(page == bigNum+1 && page < Math.floor(dataTotal/showNum)){
                             pageul.children().each(function(){
                                 bigNum++;
@@ -248,7 +246,7 @@ require(['config'],function(){
                                     $(this).addClass('active').siblings().removeClass('active');
                                     return;
                                 }
-                            });
+                        });
                     }
                 }
             }

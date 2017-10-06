@@ -1312,7 +1312,7 @@ dl dd span.err-info{
 }
 .sh-goods-details .group .related .comment{
     .comment-out{
-        margin-top:20px;
+        margin-top:50px;
         .comment-out-star{
             .comment-star-title{
                 float:left;line-height:30px;width:100px;text-indent:21px;
@@ -1362,50 +1362,76 @@ dl dd span.err-info{
 .sh-goods-details .group .related .comment .comment-page {
     float: right;
     margin-top: 10px;
-    margin-right: -8px;
-}
+    margin-right: 1px;
+    .pageturn{
+        height:22px;color:#161616;
+        .pagebox{
+            float:right;
+            a{
+                border: 1px solid #C5C5C5;
+                display: block;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                width: 58px;
+                margin-left: 10px;
+                background: #FFF;
+                float:left;
+                cursor:pointer;
+                &:hover{
+                    border: 1px solid #EF0307;
+                    color: #EF0307;
+                }
+            }
+            a.active{
+                background-color: #E7E7E7;
+            }
+            .nextpage{
+                border:0 none;
+                margin-left:2px;
+                height:22px;
+                background: url(img/sjjt.gif) no-repeat 0 -469px;
+                &:hover{
+                    border:0 none;
+                    margin-left:2px;
+                    background-position: 0 -406px;
+                }
 
-.sh-goods-details .group .related .comment .comment-page span,
-.sh-goods-details .group .related .comment .comment-page a {
-    float: left;
-    margin-right: 10px;
-    text-align: center;
-    border: 1px solid #e8e8e8;
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
-    color: #666;
-}
+            }
+            .prevpage{
+                border:0 none;
+                height:22px;
+                background: url(img/sjjt.gif) no-repeat 0 -585px;
+                &:hover{
+                        border:0 none;
+                        background-position: 0 -376px;
+                }
+            }
+            ul{
+                float:left;margin-left:10px;
+                li{
+                    float:left;
+                    margin-right: 8px;
+                    border: 1px solid #C5C5C5;
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    width: 20px;
+                    background: #FFF;
+                    cursor:pointer;
+                    &:hover{
+                        border: 1px solid #EF0307;
+                        color: #EF0307;
+                    }
+                }
+                li.active{
+                    background-color: #E7E7E7;
+                }
 
-.sh-goods-details .group .related .comment .comment-page span.text,
-.sh-goods-details .group .related .comment .comment-page a.text {
-    width: 80px;
-}
-
-.sh-goods-details .group .related .comment .comment-page a:hover {
-    border-color: #FF504A;
-}
-
-.sh-goods-details .group .related .comment .comment-page a.current,
-.sh-goods-details .group .related .comment .comment-page a:active {
-    background-color: #FF504A;
-    border-color: #FF504A;
-    color: #fff;
-}
-
-.sh-goods-details .group .related .comment .comment-page span code,
-.sh-goods-details .group .related .comment .comment-page a code {
-    display: inline-block;
-}
-
-.sh-goods-details .group .related .comment .comment-page span .code-l,
-.sh-goods-details .group .related .comment .comment-page a .code-l {
-    margin-left: 5px;
-}
-
-.sh-goods-details .group .related .comment .comment-page span .code-r,
-.sh-goods-details .group .related .comment .comment-page a .code-r {
-    margin-right: 5px;
+            }
+        }
+    }
 }
 
 /**
