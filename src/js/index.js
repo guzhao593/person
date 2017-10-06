@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:53
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-09-29 16:18:01
+* @Last Modified time: 2017-10-06 17:46:54
 */
 
 require(['config'],function(){
@@ -10,13 +10,14 @@ require(['config'],function(){
             $('#header').load('html/header.html',function(){
                 com.showlogin();
                 com.topcart();
+                com.topnotice();
             });
             $('#footer').load('html/footer.html');
             $('.sidebox').load('html/slider.html',function(){
                 com.slider().init();
                 com.showlogin();
             });
-            
+            com.showhotgoods();
             $('.main-carousel').zCarousel({
                 imgs:['img/banner_1.jpg','img/banner_2.jpg'],
                 index:0,

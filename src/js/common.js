@@ -2,11 +2,91 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:45
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-06 16:01:06
+* @Last Modified time: 2017-10-06 18:38:37
 */
 
 define(['jquery'],function($){
     return {
+        //首页热门产品显示
+        showhotgoods:function(){
+            var Showhotgoods={
+                init:function(){
+                    $.get('../api/goodslist.php?totalnum=hot&page=1',function(data,status){
+                        if(status == 'success'){
+                            var dataReceive = data.split('&');
+                            var dataTotal = JSON.parse(dataReceive[0])[0][0];
+                            var showNum = 30;
+                            var goodsData = JSON.parse(dataReceive[1]);
+                            var $goodsBox = $('.golbal_list');
+                            $goodsBox.html('');
+                            var $ul = $('<ul/>');
+                            $ul.html(goodsData.map(function(item){
+                                return `<li>
+                                        <div class="goods_box">
+                                            <div class="goods_img_box">
+                                                <a href="html/goodsdatalis.html?id=${item.id}" >
+                                                    <img alt="${item.brand} ${item.name}${item.spec}" class="lazy-loading" src="${item.imgurl}">
+                                                </a>
+                                            </div>
+                                            <p class="goods_box_tit c_clearfix">
+                                                <a href="html/goodsdatalis.html?id=${item.id}">${item.brand} ${item.name}${item.spec}</a>
+                                            </p>
+                                            <div class="goods_yen">
+                                                <span class="fl goods_price">
+                                                    <i>&yen;</i>${item.price}
+                                                </span>
+                                                <span class="fl sale_price">
+                                                    <p class="i_pos_abs"></p>
+                                                </span>
+                                                <span class="fr purchased">
+                                                    <i>${item.salenum}人</i>已购买
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="tax_box_bt">
+                                            <span class="fr time_rt">距结束仅剩 
+                                                <span class="time_rest" data-attr={"endTime":"2018,05,30,10,06,14"}></span>
+                                            </span>
+                                        </div>
+                                    </li>`;
+                            }).join(''));
+                            $ul.appendTo($goodsBox);
+                        }
+                    });
+                }
+            }
+            return Showhotgoods.init();
+        },
+        //顶部公告滚动
+        topnotice:function(){
+            var height = $('.notice_top ul').children().height();
+            setInterval(function(){
+                $('.notice_top ul').animate({marginTop:-height},500,function(){
+                    $(this).css('margin-top','0px').children().eq(0).clone().appendTo($(this));
+                    $(this).children().eq(0).remove();
+                });
+            },3000);
+        },
+        //详情页大家都在看
+        watching:function(show,selector,showclass){
+            $.get('../api/goodsdatalis.php?'+show+'='+showclass,function(data,status){
+                if(status == 'success'){
+                    var goodsData = JSON.parse(data);
+                    var $watchingBox = $(selector);
+                    $watchingBox.html(goodsData.map(function(item){
+                        return `<li>
+                                    <a href="html/goodsdatalis.html?id=${item.id}">
+                                        <img src="${item.imgurl}">
+                                        <span class="title">${item.name}*${item.spec}</span>
+                                        <span>
+                                            <span><i>￥</i>${item.price}</span>
+                                        </span>
+                                    </a>
+                                </li>`;
+                    }).join(''));
+                }
+            });
+        },
         //详情页评论
         comment:function(){
             var Comment = {
@@ -442,6 +522,7 @@ define(['jquery'],function($){
             }
             return Slider;
         },
+        //商品数量加减
         btnNum:function($ele,cart){
             var self = this;
             $ele.each(function(){
@@ -526,6 +607,7 @@ define(['jquery'],function($){
             });
             return this;
         },
+        //点击购买时抛物线动画
         parabola:function(){
             function Parabola(){
                 this.init();
@@ -579,6 +661,7 @@ define(['jquery'],function($){
             }
             return new Parabola();
         },
+        //增加商品到购物车
         addCart:function(idNum,goodsData){
             var $this = $('.sh-shopping-cart');
             $this.click(()=>{
@@ -628,6 +711,7 @@ define(['jquery'],function($){
             });
             return this;
         },
+        //顶部购物车
         topcart:function(){
             var Topcart = {
                 init:function(){
@@ -667,6 +751,7 @@ define(['jquery'],function($){
             }
             return Topcart.init();
         },
+        //购物页面订单显示
         cartshow:function(){
             var cartData = [];
             var cookies = document.cookie;
@@ -740,6 +825,7 @@ define(['jquery'],function($){
             $('.c_paid i').text(totalAll);
             return this;
         },
+        //购物车订单发生改变时
         cartchange:function(){
             var self = this;
             var Cart = {
@@ -808,6 +894,7 @@ define(['jquery'],function($){
             }
             return Cart.init();
         },
+        //注册页面
         register:function(){
             var Reg = {
                 init:function(){
@@ -1047,6 +1134,7 @@ define(['jquery'],function($){
             }
             return Reg.init();
         },
+        //登录后显示
         showlogin:function(){
             var cookies = document.cookie.split('; ');
             cookies.forEach(function(item){
@@ -1070,6 +1158,7 @@ define(['jquery'],function($){
                 });
             });
         },
+        //登录页面
         login:function(){
             var cookies = document.cookie.split('; ');
             cookies.forEach(function(item){

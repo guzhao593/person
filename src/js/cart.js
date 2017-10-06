@@ -20,8 +20,9 @@ require(['config'],function(){
             com.cartchange();
         })
         $(window).scroll(function(){
-            var carHeight = $('#footer').offset().top -window.innerHeight-51;
-            if($(window).scrollTop()>50 && $(window).scrollTop() < carHeight){
+            var carHeight = $('#footer').offset().top -window.innerHeight;
+            var fixedHeight = $('.fixed_bt').outerHeight();
+            if($(window).scrollTop()>50 && $(window).scrollTop() < carHeight-fixedHeight){
                 $('.fixed_balance').css('display','block');
                 $('.fixed_bt').css({
                     position:'fixed',
@@ -30,7 +31,7 @@ require(['config'],function(){
                     width:'100%',
                     zIdex:100
                 });
-            }else if($(window).scrollTop()<=50 || $(window).scrollTop() >= carHeight){
+            }else if($(window).scrollTop()<=50 || $(window).scrollTop() >= carHeight+fixedHeight){
                 $('.fixed_balance').css('display','none');
                 $('.fixed_bt').css({
                     position:'static'

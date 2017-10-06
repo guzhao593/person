@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-26 09:17:02
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-06 15:13:52
+* @Last Modified time: 2017-10-06 18:46:48
 */
 
 require(['config'],function(){
@@ -19,9 +19,10 @@ require(['config'],function(){
         });
         //评论
         com.comment();
-
         var id = location.search.slice(1);
         var idNum = Number(id.slice(3));
+        //大家都在看
+        com.watching('watching','#all_watching',idNum);
         var viewData = [];
         var cookies = document.cookie;
         if(cookies.length>0){
@@ -37,6 +38,8 @@ require(['config'],function(){
                 if(status == 'success'){
                     var goodsData = JSON.parse(data)[0];
                     com.addCart(idNum,goodsData);
+                    //同类产品
+                    com.watching('similar','#final_buy',goodsData.subclass);
                     var has = false;
                     viewData.forEach(function(item){
                         if(item.id == idNum){
