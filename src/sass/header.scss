@@ -50,12 +50,24 @@
         float:left;width:206px;margin-top:6px;margin-right:82px;
     }
     .search{    
-        width: 420px;margin-top: 6px;text-align:left;float:left;
+        width: 420px;margin-top: 6px;text-align:left;float:left;position:relative;
         input#search{
             width:326px;height:30px;line-height:32px;border:2px solid #f70800;float:left;padding-left:15px;color:#999;font-size:12px;
         }
         button{
             height:34px;background-color:#f70800;border:0 none;float:right;width:75px;color:#fff;cursor:pointer;
+        }
+        ul.keywords{
+            position: absolute;left: 2px;top: 34px;border: 1px solid #ccc;width: 340px;height: auto;z-index: 999;background-color: #fff;
+            li{
+                height: 26px;line-height: 26px;color: #222;position: relative;padding-left: 10px;
+                &:hover{
+                    background-color:#ccc;
+                }
+                a{
+                    width:100%;display:inline-block;
+                }
+            }
         }
     }
     .topcar{

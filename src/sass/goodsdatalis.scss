@@ -1679,7 +1679,7 @@ dl dd span.err-info{
 .store-select i {
     width: 7px;
     height: 4px;
-    background-image: url(../../images/2013_v1/shopcart2014/shop-sprite.gif);
+    background-image: url(img/shop-sprite.gif);
     background-repeat: no-repeat;
     background-position: -55px -175px;
     position: absolute;
@@ -1747,7 +1747,9 @@ dl dd span.err-info{
 .store-select .tab-content li a.curr {
     color: #fa423f;
 }
-
+.store-select .tab-content .col2 {
+    width: 120px;
+}
 .store-select .tab-content .col3 {
     width: 100px;
 }

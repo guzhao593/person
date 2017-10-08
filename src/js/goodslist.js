@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-27 09:59:11
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-06 11:16:35
+* @Last Modified time: 2017-10-08 20:41:26
 */
 require(['config'],function(){
     require(['jquery','common'],function($,com){
@@ -10,6 +10,8 @@ require(['config'],function(){
             $('.guiding a').removeClass('hover').eq(2).addClass('hover');
             com.showlogin();
             com.topcart();
+            com.topnotice();
+            com.search();
         });
         $('#footer').load('../html/footer.html');
         $('.sidebox').load('../html/slider.html',function(){
@@ -19,6 +21,7 @@ require(['config'],function(){
         var arr = location.search.slice(1).split('&');
         var page;
         var field;
+        var goodsClass = '';
         var condition = '';
         arr.forEach(function(item){
             var temp = item.split('=');
@@ -28,6 +31,8 @@ require(['config'],function(){
                 field = temp[1];
             }else if (temp[0]== 'condition'){
                 condition = temp[1];
+            }else if(temp[0]== 'class'){
+                goodsClass = temp[1];
             }
         });
         $('.filter_goods').find('.active').removeClass('active').parent().removeClass('clickbg');
@@ -37,28 +42,35 @@ require(['config'],function(){
                     }else if(condition == 'ascend'){
                         $('.navprice').addClass('ascend').removeClass('descend');
                     }
-        $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition,function(data,status){
+        var classLi = $('.bigclass ul li');
+        $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition+'&class='+goodsClass,function(data,status){
             if(status == 'success'){
-                selectShowGoods(data,field);
+                selectShowGoods(data,field,goodsClass);
+                classLi.click(function(){
+                    $(this).addClass('select').siblings().removeClass('select');
+                    $(this).children().eq(0).addClass('imghover').removeClass('imgshow')
+                    goodsClass = $(this).attr('data-class');
+                    location.href = `html/goodslist.html?page=1&totalnum=id&class=${goodsClass}`;
+                });
                 $('.filter_goods').on('click','span',function(){
                     if($(this).text() == '销量'){
-                        location.href = `html/goodslist.html?page=1&totalnum=salenum`;
+                        location.href = `html/goodslist.html?page=1&totalnum=salenum&class=${goodsClass}`;
                     }
                     if($(this).text() == '今日推荐'){
-                        location.href = `html/goodslist.html?page=1&totalnum=id`;
+                        location.href = `html/goodslist.html?page=1&totalnum=id&class=${goodsClass}`;
                     }
                     if($(this).text() == '上架时间'){
-                        location.href = `html/goodslist.html?page=1&totalnum=addtime`;
+                        location.href = `html/goodslist.html?page=1&totalnum=addtime&class=${goodsClass}`;
                     }
                 })
                 $('.navprice').click(function(){
                         if(condition == '' || condition == 'ascend'){
-                            location.href = `html/goodslist.html?page=1&totalnum=price&condition=descend`;
+                            location.href = `html/goodslist.html?page=1&totalnum=price&condition=descend&class=${goodsClass}`;
                         }else if(condition == 'descend'){
-                             location.href = `html/goodslist.html?page=1&totalnum=price&condition=ascend`;
+                             location.href = `html/goodslist.html?page=1&totalnum=price&condition=ascend&class=${goodsClass}`;
                         }
                     })
-                function selectShowGoods(data,field){
+                function selectShowGoods(data,field,goodsClass){
                         var dataReceive = data.split('&');
                         var dataTotal = JSON.parse(dataReceive[0])[0][0];
                         var showNum = 30;
@@ -97,17 +109,17 @@ require(['config'],function(){
                                 </li>`;
                         }).join(''));
                         $ul.appendTo($goodsBox);
-                        turnPage(dataTotal,showNum,field);
+                        turnPage(dataTotal,showNum,field,goodsClass);
                     }
                     //翻页
-                function turnPage(dataTotal,showNum,field){
+                function turnPage(dataTotal,showNum,field,goodsClass){
                         showPage();
                         //单击首页按纽时
                         $('.first').click(function(){
                             $('.first').addClass('active').siblings('a').removeClass('active');
                             page = 1;
                             showPage();
-                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition,function(data,status){
+                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition+'&class='+goodsClass,function(data,status){
                                 showGoods(data,status);
                             })
                         })
@@ -116,7 +128,7 @@ require(['config'],function(){
                             $('.last').addClass('active').siblings('a').removeClass('active');
                             page = Math.ceil(dataTotal/showNum);
                             showPage();
-                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition,function(data,status){
+                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition+'&class='+goodsClass,function(data,status){
                                 showGoods(data,status);
                             })
                         })
@@ -128,7 +140,7 @@ require(['config'],function(){
                                 page = 1;
                             }
                             showPage();
-                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition,function(data,status){
+                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition+'&class='+goodsClass,function(data,status){
                                 showGoods(data,status);
                             })
                         })
@@ -140,14 +152,14 @@ require(['config'],function(){
                                 page = Math.ceil(dataTotal/showNum);
                             }
                             showPage();
-                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition,function(data,status){
+                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition+'&class='+goodsClass,function(data,status){
                                 showGoods(data,status);
                             })
                         })
                         $('.pagebox ul').on('click','li',function(){
                             page = $(this).text();
                             showPage();
-                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition,function(data,status){
+                            $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition+'&class='+goodsClass,function(data,status){
                                 showGoods(data,status);
                             })
                         })

@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:53
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-06 17:46:54
+* @Last Modified time: 2017-10-08 17:13:44
 */
 
 require(['config'],function(){
@@ -11,6 +11,7 @@ require(['config'],function(){
                 com.showlogin();
                 com.topcart();
                 com.topnotice();
+                com.search();
             });
             $('#footer').load('html/footer.html');
             $('.sidebox').load('html/slider.html',function(){

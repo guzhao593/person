@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-26 09:17:02
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-06 18:46:48
+* @Last Modified time: 2017-10-08 18:06:23
 */
 
 require(['config'],function(){
@@ -11,6 +11,8 @@ require(['config'],function(){
             $('.guiding a').removeClass('hover').eq(2).addClass('hover');
             com.showlogin();
             com.topcart();
+            com.topnotice();
+            com.search();
         });
         $('#footer').load('../html/footer.html');
         $('.sidebox').load('../html/slider.html',function(){
@@ -19,6 +21,8 @@ require(['config'],function(){
         });
         //评论
         com.comment();
+        //送货地址
+        com.shiptoaddress();
         var id = location.search.slice(1);
         var idNum = Number(id.slice(3));
         //大家都在看
@@ -37,6 +41,7 @@ require(['config'],function(){
         $.get('../api/goodsdatalis.php?'+id,function(data,status){
                 if(status == 'success'){
                     var goodsData = JSON.parse(data)[0];
+                    //添加到购物车
                     com.addCart(idNum,goodsData);
                     //同类产品
                     com.watching('similar','#final_buy',goodsData.subclass);
@@ -61,6 +66,7 @@ require(['config'],function(){
                         bigImgs:goodsData.bigimgurl.split(','),
                         index:0
                     }
+                    //图片展示
                     var Gallery = {
                         init:function(){
                             $this = opt.box;
@@ -103,6 +109,7 @@ require(['config'],function(){
                         }
                     }
                     Gallery.init();
+                    //放大镜效果
                     var Jqzoom ={
                         init:function(){
                             $this = $('.jqzoom');

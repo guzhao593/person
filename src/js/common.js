@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:45
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-06 18:38:37
+* @Last Modified time: 2017-10-08 18:39:16
 */
 
 define(['jquery'],function($){
@@ -57,6 +57,41 @@ define(['jquery'],function($){
             }
             return Showhotgoods.init();
         },
+        //搜索功能
+        search:function(){
+            var Search={
+                init:function(){
+                    var self = this;
+                    $('#search').keyup(function(){
+                        if($(this).val().trim() !== ''){
+                            self.show($(this).val());
+                        }
+                    });
+                    $(document).on('mouseover',function(e){
+                        if(!$(e.target).parents().hasClass('search')){
+                            $('.keywords').css('display','none');
+                        }
+                    })
+                },
+                show:function(val){
+                    $.get('../api/search.php?value='+val,function(data,status){
+                        if(status == 'success'){
+                            var searchData = JSON.parse(data);
+                            $('.keywords').html(searchData.map(function(item,idx){
+                                if(idx>=10){
+                                    return;
+                                }
+                                return `<li><a href="html/goodsdatalis.html?id=${item.id}">${item.name}</a></li>`;
+                            }).join(''));
+                            if($('.keywords').html().trim() != ''){
+                                $('.keywords').css('display','block');
+                            }
+                        }
+                    });
+                }
+            }
+            return Search.init();
+        },
         //顶部公告滚动
         topnotice:function(){
             var height = $('.notice_top ul').children().height();
@@ -67,7 +102,137 @@ define(['jquery'],function($){
                 });
             },3000);
         },
-        //详情页大家都在看
+        //送货地址选择
+        shiptoaddress:function(){
+            var Shiptoaddress = {
+                init:function(){
+                    var self = this;
+                    $('.store-select').mouseover(function(e){
+                        if($('.content').css('display') == 'block'){
+                            return false;
+                        }
+                        $('.content').css('display','block');
+                        if($('.store-select .text').text() == '请选择'){
+                            self.province();
+                        }
+                    });
+                    $('.cls').click(function(){
+                         $('.content').css('display','none');
+                    });
+                    $('.mt').on('click','li',function(){
+                        if($(this).index() == 0){
+                            $('.tab-content').css('display','none').eq($(this).index()).css('display','block');
+                            $('.mt').children().eq($(this).index()).addClass('curr').siblings().removeClass('curr');
+                        };
+                        if($(this).index() == 1){
+                            $('.tab-content').css('display','none').eq($(this).index()).css('display','block');
+                            $('.mt').children().eq($(this).index()).addClass('curr').siblings().removeClass('curr');
+                        };
+                        if($(this).index() == 2){
+                            $('.tab-content').css('display','none').eq($(this).index()).css('display','block');
+                            $('.mt').children().eq($(this).index()).addClass('curr').siblings().removeClass('curr');
+                        };
+                    });
+                    $('#stock_province_item').on('click','a',function(){
+                        $(this).parents('.tab-content').find('a').removeClass('curr');
+                        $(this).addClass('curr');
+                        $('.mt').children().eq(0).find('em').text($(this).text());
+                        $('.mt').children().eq(1).find('em').text('请选择');
+                        $('.mt').children().eq(2).css('display','none');
+                        $('.mt').children().eq(1).css('display','block').addClass('curr').siblings().removeClass('curr');
+                        self.city($(this).attr('data-value'));
+                    })
+                    $('#stock_city_item').on('click','a',function(){
+                        $(this).parents('.tab-content').find('a').removeClass('curr');
+                        $(this).addClass('curr');
+                        $('.mt').children().eq(1).find('em').text($(this).text());
+                        $('.mt').children().eq(2).css('display','block').find('em').text('请选择');
+                        $('.mt').children().eq(2).addClass('curr').siblings().removeClass('curr');
+                        self.area($(this).attr('data-value'));
+                    })
+                    $('#stock_area_item').on('click','a',function(){
+                        $(this).parents('.tab-content').find('a').removeClass('curr');
+                        $(this).addClass('curr');
+                        $('.mt').children().eq(2).find('em').text($(this).text());
+                        $('.mt').children().eq(2).addClass('curr').siblings().removeClass('curr');
+                        $('.content').css('display','none');
+                        $('.store-select .text').text($('.mt').children().eq(0).find('em').text()+$('.mt').children().eq(1).find('em').text()+$('.mt').children().eq(2).find('em').text());
+                    })
+                },
+                province:function(){
+                    $('.tab-content').css('display','none');
+                    $('.mt').children().css('display','none').eq(0).css('display','block');
+                    $('#stock_province_item').css('display','block');
+                    $.get('../api/goodsdatalis.php?province=all',function(data,status){
+                        if(status == 'success'){
+                            var province = JSON.parse(data);
+                            $('#stock_province_item').html(province.map(function(item){
+                                var className = '';
+                                if(item.province.length == 4){
+                                    className = 'col4';
+                                }else if(item.province.length >4 && item.province.length <=8){
+                                    className = 'col3';
+                                }
+                                
+                                return `<li class="${className}">
+                                            <a data-value="${item.provinceid}">${item.province}</a>
+                                        </li>`;
+                                })
+                            );
+                        }
+                    });
+                },
+                city:function(provinceid){
+                    $('.tab-content').css('display','none');
+                    $('#stock_city_item').css('display','block');
+
+                    $.get('../api/goodsdatalis.php?city='+provinceid,function(data,status){
+                        if(status == 'success'){
+                            var city = JSON.parse(data);
+                            $('#stock_city_item').html(city.map(function(item){
+                                var className = '';
+                                if(item.city.length == 4){
+                                    className = 'col4';
+                                }else if(item.city.length >4 && item.city.length <=8){
+                                    className = 'col3';
+                                }
+                                
+                                return `<li class="${className}">
+                                            <a data-value="${item.cityid}">${item.city}</a>
+                                        </li>`;
+                                })
+                            );
+                        }
+                    });
+                },
+                area:function(cityid){
+                    $('.tab-content').css('display','none');
+                    $('#stock_area_item').css('display','block');
+                    $.get('../api/goodsdatalis.php?area='+cityid,function(data,status){
+                        if(status == 'success'){
+                            var city = JSON.parse(data);
+                            $('#stock_area_item').html(city.map(function(item){
+                                var className = '';
+                                if(item.area.length == 4){
+                                    className = 'col4';
+                                }else if(item.area.length >4 && item.area.length <=8){
+                                    className = 'col3';
+                                }else if(item.area.length >8){
+                                    className = 'col2';
+                                }
+                                
+                                return `<li class="${className}">
+                                            <a data-value="${item.areaid}">${item.area}</a>
+                                        </li>`;
+                                })
+                            );
+                        }
+                    });
+                }
+            }
+            return Shiptoaddress.init();
+        },
+        //详情页大家都在看,同类商品
         watching:function(show,selector,showclass){
             $.get('../api/goodsdatalis.php?'+show+'='+showclass,function(data,status){
                 if(status == 'success'){
@@ -232,6 +397,8 @@ define(['jquery'],function($){
                                 self.commentGood = JSON.parse(commentData[2])[0][0]*1;
                                 self.commentMiddle = JSON.parse(commentData[3])[0][0]*1;
                                 self.commentBad = JSON.parse(commentData[4])[0][0]*1;
+                                self.commentAll = self.commentGood+self.commentMiddle+self.commentBad;
+                                $('#all').prop('checked',true);
                             }
                             var commentShow = JSON.parse(commentData[1]);
                             $('.comment-list').html(commentShow.map(function(item){
@@ -252,8 +419,8 @@ define(['jquery'],function($){
                                                 </div>
                                             </li>`;
                             }).join(''));
-                            $('#flcomments').text(`(${self.commentTotal})`);
-                            $('#allifno').text(`全部评论(${self.commentTotal})`);
+                            $('#flcomments').text(`(${self.commentAll})`);
+                            $('#allifno').text(`全部评论(${self.commentAll})`);
                             $('#goodifno').text(`好评(${self.commentGood})`);
                             $('#middleifno').text(`中评(${self.commentMiddle})`);
                             $('#badifno').text(`差评(${self.commentBad})`);
@@ -405,8 +572,8 @@ define(['jquery'],function($){
                         if(viewData.length == 0){
                             $('.empty').css('display','block').next().css('display','none');
                         }else{
-                            $('.show-goods').css('display','block').css('height',window.innerHeight-61+'px').prev().css('display','none');
-                            $('.show-goods').html(viewData.map(function(item){
+                            $('.show-care .show-goods').css('display','block').css('height',window.innerHeight-61+'px').prev().css('display','none');
+                            $('.show-care .show-goods').html(viewData.map(function(item){
                                 return `<div class="goods-box clearfix">
                                             <a href="html/goodsdatalis.html?id=${item.id}">
                                                 <img src="${item.imgurl}" alt="">
@@ -821,6 +988,7 @@ define(['jquery'],function($){
                 $('.cartlist ul').html(`<li class="empty">你的购物车是空的</li>`);
             }
             $('.c_piece i').text(goodsQty);
+            $('.fix_piece i').text(goodsQty);
             $('.totalall').text(totalAll);
             $('.c_paid i').text(totalAll);
             return this;
@@ -846,6 +1014,7 @@ define(['jquery'],function($){
                                     checkedQty++;
                                 }
                             })
+                            $this.showTotal();
                             if(checkedQty == $select.length){
                                 $selectAll.prop('checked',true);
                             }else{
@@ -856,7 +1025,7 @@ define(['jquery'],function($){
                             $(this).prop('checked');
                             $selectAll.prop('checked',$(this).prop('checked'));
                             $select.prop('checked',$(this).prop('checked'));
-                            
+                            $this.showTotal();
                         }
                         if($(this).hasClass('b_del')){
                             $select.each(function(){
@@ -890,6 +1059,20 @@ define(['jquery'],function($){
                     document.cookie ='cartData='+JSON.stringify(cartData)+';path=/;expires=' +date.toUTCString();
                     self.slider().showCartGoods();
                     self.cartshow();
+                },
+                showTotal:function(){
+                    var totalAll = 0;
+                    var goodsQty = 0;
+                    $('input[name=select]').prop('checked',function(idx,item){
+                        if(item == true){
+                            totalAll += $(this).parent().prev().prev().find('i').text()*1;
+                            goodsQty += $(this).parent().prev().prev().prev().find('input').val()*1;
+                        }
+                    });
+                    $('.totalall').text(totalAll);
+                    $('.c_paid i').text(totalAll);
+                    $('.c_piece i').text(goodsQty);
+                    $('.fix_piece i').text(goodsQty);
                 }
             }
             return Cart.init();

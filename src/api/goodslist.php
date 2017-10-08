@@ -3,14 +3,25 @@
     $page = isset($_GET['page'])?$_GET['page'] : '';
     $totalNum = isset($_GET['totalnum'])?$_GET['totalnum'] : '';
     $condition = isset($_GET['condition'])?$_GET['condition'] : '';
+    $class = isset($_GET['class'])?$_GET['class'] : '';
     $pageShowNum = 30;
     $pageNumFirst = ($page-1)*$pageShowNum;
-    if($condition == 'descend'){
-        $sql = "select * from goods order by $totalNum*1 desc limit $pageNumFirst,$pageShowNum";
-    }else if($condition == 'ascend'){
-        $sql = "select * from goods order by $totalNum*1 asc limit $pageNumFirst,$pageShowNum";
+    if($class == 'all' || $class==''){
+        if($condition == 'descend'){
+            $sql = "select * from goods order by $totalNum*1 desc limit $pageNumFirst,$pageShowNum";
+        }else if($condition == 'ascend'){
+            $sql = "select * from goods order by $totalNum*1 asc limit $pageNumFirst,$pageShowNum";
+        }else{
+            $sql = "select * from goods order by $totalNum asc limit $pageNumFirst,$pageShowNum";
+        }
     }else{
-        $sql = "select * from goods order by $totalNum asc limit $pageNumFirst,$pageShowNum";
+        if($condition == 'descend'){
+            $sql = "select * from goods where subclass='$class' order by $totalNum*1 desc limit $pageNumFirst,$pageShowNum";
+        }else if($condition == 'ascend'){
+            $sql = "select * from goods where subclass='$class' order by $totalNum*1 asc limit $pageNumFirst,$pageShowNum";
+        }else{
+            $sql = "select * from goods where subclass='$class' order by $totalNum asc limit $pageNumFirst,$pageShowNum";
+        }
     }
     $result = $conn->query($sql);
     $row = $result->fetch_all(MYSQLI_ASSOC);
