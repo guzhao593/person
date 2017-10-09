@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-27 09:59:11
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-08 20:41:26
+* @Last Modified time: 2017-10-08 22:21:57
 */
 require(['config'],function(){
     require(['jquery','common'],function($,com){
@@ -32,7 +32,7 @@ require(['config'],function(){
             }else if (temp[0]== 'condition'){
                 condition = temp[1];
             }else if(temp[0]== 'class'){
-                goodsClass = temp[1];
+                goodsClass = decodeURI(temp[1]);
             }
         });
         $('.filter_goods').find('.active').removeClass('active').parent().removeClass('clickbg');
@@ -43,12 +43,23 @@ require(['config'],function(){
                         $('.navprice').addClass('ascend').removeClass('descend');
                     }
         var classLi = $('.bigclass ul li');
+        classLi.each(function(){
+            if($(this).attr('data-class') == goodsClass){
+                console.log(goodsClass);
+                $(this).children().eq(0).addClass('imghover').removeClass('imgshow');
+                $(this).children().eq(1).addClass('imgshow').removeClass('imghover');
+                $(this).children().eq(2).css('color','#f70800');
+            }else{
+                $(this).children().eq(0).addClass('imgshow').removeClass('imghover');
+                $(this).children().eq(1).addClass('imghover').removeClass('imgshow');
+                $(this).children().eq(2).css('color','#222');
+            }
+        });
         $.get('../api/goodslist.php?page='+page+'&totalnum='+field+'&condition='+condition+'&class='+goodsClass,function(data,status){
             if(status == 'success'){
                 selectShowGoods(data,field,goodsClass);
                 classLi.click(function(){
                     $(this).addClass('select').siblings().removeClass('select');
-                    $(this).children().eq(0).addClass('imghover').removeClass('imgshow')
                     goodsClass = $(this).attr('data-class');
                     location.href = `html/goodslist.html?page=1&totalnum=id&class=${goodsClass}`;
                 });

@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2017-09-24 17:35:45
 * @Last Modified by:   Marte
-* @Last Modified time: 2017-10-08 18:39:16
+* @Last Modified time: 2017-10-08 22:30:28
 */
 
 define(['jquery'],function($){
@@ -195,6 +195,8 @@ define(['jquery'],function($){
                                     className = 'col4';
                                 }else if(item.city.length >4 && item.city.length <=8){
                                     className = 'col3';
+                                }else if(item.city.length >8){
+                                    className = 'col2';
                                 }
                                 
                                 return `<li class="${className}">
@@ -796,8 +798,8 @@ define(['jquery'],function($){
                         var imgLeft = this.img.offset().left-window.scrollX;
                         var xSpeed = (targetLeft -imgLeft)/10;
                         xSpeed  = xSpeed <3 ? xSpeed = 3 : xSpeed ;
-                        var ySpeed =(imgTop - 0)/3.2;
                         imgLeft += xSpeed;
+                        var ySpeed =(imgTop - 0)/3.2;
                         if(imgLeft >= targetLeft){
                             clearInterval(para);
                             this.remove();
